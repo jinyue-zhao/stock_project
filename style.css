@@ -484,10 +484,3 @@ table th:nth-child(12),
 table td:nth-child(12) {
     width: 130px;
 }
-
-th,
-td {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
