@@ -1,0 +1,437 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Microsoft JhengHei", Arial, sans-serif;
+    background: #f4f6f8;
+    color: #1f2937;
+}
+
+.page {
+    width: min(1200px, 92%);
+    margin: 0 auto;
+    padding: 0 0 60px;
+}
+
+/* 頁首：仿櫃買中心風格 */
+.site-header {
+    background: #ffffff;
+    border-bottom: 1px solid #d1d5db;
+    margin-bottom: 28px;
+}
+
+/* 右上角語言列 */
+.top-lang {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    height: 34px;
+    font-size: 14px;
+    color: #111827;
+}
+
+.top-lang a {
+    color: #111827;
+    text-decoration: none;
+}
+
+.top-lang a:hover {
+    color: #b91c1c;
+}
+
+/* 主導覽列 */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 78px;
+}
+
+/* 左側品牌區 */
+.site-logo {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-text h1 {
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #111827;
+}
+
+.brand-text p {
+    display: none;
+}
+
+/* 右側選單 */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+    padding-left: 28px;
+}
+
+.nav-links a {
+    position: relative;
+    color: #111827;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 28px 0;
+}
+
+.nav-links a:hover {
+    color: #b91c1c;
+}
+
+/* 目前選中的項目 */
+.nav-links a.active {
+    color: #dc2626;
+}
+
+.nav-links a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 18px;
+    height: 3px;
+    background: #dc2626;
+    border-radius: 999px;
+}
+
+/* 查詢區 */
+.search-card {
+    background: white;
+    padding: 24px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.search-card h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.search-box {
+    display: flex;
+    gap: 12px;
+}
+
+.search-box select,
+.search-box input {
+    padding: 14px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 16px;
+    background: white;
+}
+
+.search-box select {
+    width: 180px;
+}
+
+.search-box input {
+    flex: 1;
+}
+
+.search-box select:focus,
+.search-box input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.search-box button {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background: #1d4ed8;
+}
+
+.hint {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+/* 統計卡片 */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: white;
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card h3 {
+    margin: 0 0 12px;
+    color: #6b7280;
+    font-size: 16px;
+}
+
+.stat-card p {
+    margin: 0;
+    font-size: 30px;
+    font-weight: bold;
+    color: #111827;
+}
+
+/* 系統說明 */
+.strategy-card {
+    background: white;
+    padding: 24px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.strategy-card h2 {
+    margin-top: 0;
+}
+
+.strategy-card p {
+    line-height: 1.8;
+    color: #4b5563;
+}
+
+/* 表格區 */
+.table-card {
+    background: white;
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.table-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.table-title-row h2 {
+    margin: 0;
+}
+
+.table-title-row p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 1250px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: center;
+    white-space: nowrap;
+}
+
+th {
+    background: #f9fafb;
+    color: #374151;
+    font-weight: 700;
+}
+
+td {
+    color: #4b5563;
+}
+
+/* 漲跌顏色：台股紅漲綠跌 */
+.positive {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+.negative {
+    color: #16a34a;
+    font-weight: bold;
+}
+
+.neutral {
+    color: #6b7280;
+}
+
+/* 手機版 */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box select {
+        width: 100%;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .table-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .site-header {
+        padding-bottom: 12px;
+    }
+
+    .top-lang {
+        justify-content: center;
+    }
+
+    .main-nav {
+        flex-direction: column;
+      align-items: flex-start;
+       gap: 16px;
+    }
+
+    .brand {
+        border-right: none;
+        padding-right: 0;
+       min-width: auto;
+    }
+
+    .nav-links {
+       width: 100%;
+        overflow-x: auto;
+      gap: 24px;
+       padding-left: 0;
+    }
+
+    .nav-links a {
+       white-space: nowrap;
+      padding: 12px 0;
+    }
+}
+.stats-grid.five {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 900px) {
+    .stats-grid.five {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .stats-grid.five {
+        grid-template-columns: 1fr;
+    }
+}
+
+.simple-header {
+    justify-content: space-between;
+}
+
+.back-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.more-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.more-row button,
+.pagination button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.more-row button:hover,
+.pagination button:hover {
+    background: #1d4ed8;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.pagination button:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+#pageInfo {
+    font-weight: 600;
+    color: #374151;
+}
+
+.top-pagination {
+    justify-content: flex-end;
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+.top-pagination button {
+    padding: 10px 18px;
+}
+
+.top-pagination span {
+    font-size: 14px;
+}
+
+.outside-table {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+    margin-bottom: 32px;
+}

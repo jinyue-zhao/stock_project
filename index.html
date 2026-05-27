@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台灣股票市場資料查詢系統</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 用來讀取 CSV 的套件 -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+    <div class="page">
+
+        <header class="site-header">
+            <div class="main-nav">
+                <div class="brand">
+                    <img class="site-logo" src="assets/logo.png" alt="櫃買市場資料查詢系統圖標">
+
+                    <div class="brand-text">
+                        <h1>櫃買市場資料查詢系統</h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="search-card">
+            <h2>股票法人買賣超查詢</h2>
+
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="keywordInput" 
+                    placeholder="輸入股票代號或名稱，例如 1815、富喬"
+                >
+
+                <button onclick="filterData()">查詢</button>
+          </div>
+
+           <p class="hint">
+             資料來源為上櫃股票三大法人合計買賣超資料。
+          </p>
+        </section>
+
+        <section class="stats-grid five">
+          <div class="stat-card">
+              <h3>資料筆數</h3>
+              <p id="totalCount">--</p>
+           </div>
+
+           <div class="stat-card">
+              <h3>上漲家數</h3>
+             <p id="upCount">--</p>
+           </div>
+
+          <div class="stat-card">
+              <h3>下跌家數</h3>
+             <p id="downCount">--</p>
+          </div>
+
+         <div class="stat-card">
+               <h3>平均漲跌幅</h3>
+             <p id="avgChange">--</p>
+         </div>
+
+          <div class="stat-card">
+              <h3>法人買超占比</h3>
+              <p id="instBuyRatio">--</p>
+         </div>
+        </section>
+
+        <section class="strategy-card">
+            <h2>系統說明</h2>
+            <p>
+                本系統可讀取股票當日行情資料，並提供市場篩選、股票代號搜尋、
+                股票名稱搜尋與基本統計摘要。若資料欄位為空值，系統會以「--」表示。
+            </p>
+        </section>
+
+<section class="table-card">
+    <div class="table-title-row">
+        <h2 id="tableTitle">法人買賣超資料</h2>
+        <p id="displayNote">目前顯示前 10 筆資料</p>
+    </div>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>股票代號</th>
+                    <th>股票名稱</th>
+                    <th>收盤價</th>
+                    <th>漲跌幅</th>
+                    <th>成交量</th>
+                    <th>外資買賣超</th>
+                    <th>投信買賣超</th>
+                    <th>自營商買賣超</th>
+                    <th>三大法人合計</th>
+                    <th>法人/成交量</th>
+                    <th>法人/發行股數</th>
+                </tr>
+            </thead>
+
+            <tbody id="dataTable">
+                <tr>
+                    <td colspan="12">資料載入中...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div class="more-row outside-table">
+    <button id="moreBtn" type="button">查看更多</button>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
