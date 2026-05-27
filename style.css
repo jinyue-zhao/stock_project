@@ -256,6 +256,7 @@ table {
     width: 100%;
     min-width: 1250px;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 th, td {
@@ -434,4 +435,59 @@ td {
     justify-content: center;
     margin-top: 18px;
     margin-bottom: 32px;
+}
+
+table th:nth-child(1),
+table td:nth-child(1) {
+    width: 110px;
+}
+
+table th:nth-child(2),
+table td:nth-child(2) {
+    width: 100px;
+}
+
+table th:nth-child(3),
+table td:nth-child(3) {
+    width: 130px;
+}
+
+table th:nth-child(4),
+table td:nth-child(4) {
+    width: 100px;
+}
+
+table th:nth-child(5),
+table td:nth-child(5) {
+    width: 100px;
+}
+
+table th:nth-child(6),
+table td:nth-child(6) {
+    width: 120px;
+}
+
+table th:nth-child(7),
+table td:nth-child(7),
+table th:nth-child(8),
+table td:nth-child(8),
+table th:nth-child(9),
+table td:nth-child(9),
+table th:nth-child(10),
+table td:nth-child(10) {
+    width: 130px;
+}
+
+table th:nth-child(11),
+table td:nth-child(11),
+table th:nth-child(12),
+table td:nth-child(12) {
+    width: 130px;
+}
+
+th,
+td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
