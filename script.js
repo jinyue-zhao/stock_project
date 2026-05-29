@@ -1,4 +1,3 @@
-let stockData = [];
 let allStockData = [];
 
 const DATA_URL = "data/tpex_stock.json";
@@ -54,30 +53,17 @@ async function loadFromCloudJson(keyword = "") {
 
         const latestDate = getLatestDate(filtered);
 
-        filtered = filtered
-            .filter(item => item.date === latestDate)
-            .sort((a, b) => {
-                return Number(b.total_inst_net_buy || 0) - Number(a.total_inst_net_buy || 0);
-            });
+        const latestData = filtered.filter(item => item.date === latestDate);
 
-        stockData = filtered.slice(0, 10);
-
-        updateStats(filtered);
-        renderTable(stockData);
-
-        document.getElementById("displayNote").textContent =
-            `目前顯示 ${latestDate} 法人買超前 ${stockData.length} 筆資料`;
+        updateStats(latestData);
+        renderDashboardTables(latestData, latestDate);
 
     } catch (error) {
         console.error("雲端資料讀取失敗：", error);
 
-        document.getElementById("dataTable").innerHTML = `
-            <tr>
-                <td colspan="12">
-                    雲端資料讀取失敗，請稍後再試。
-                </td>
-            </tr>
-        `;
+        showLoadError("instTopTable", 9);
+        showLoadError("gainTopTable", 9);
+        showLoadError("volumeTopTable", 9);
     }
 }
 
@@ -129,23 +115,55 @@ function updateStats(data) {
     document.getElementById("instBuyRatio").textContent = instBuyRatio.toFixed(1) + "%";
 }
 
-function renderTable(data) {
-    const tableBody = document.getElementById("dataTable");
+function renderDashboardTables(data, latestDate) {
+    const instTop = [...data]
+        .sort((a, b) => Number(b.total_inst_net_buy || 0) - Number(a.total_inst_net_buy || 0))
+        .slice(0, 10);
+
+    const gainTop = [...data]
+        .sort((a, b) => Number(b.price_change_pct || 0) - Number(a.price_change_pct || 0))
+        .slice(0, 10);
+
+    const volumeTop = [...data]
+        .sort((a, b) => Number(b.volume || 0) - Number(a.volume || 0))
+        .slice(0, 10);
+
+    renderCompactTable("instTopTable", instTop, "inst");
+    renderCompactTable("gainTopTable", gainTop, "gain");
+    renderCompactTable("volumeTopTable", volumeTop, "volume");
+
+    document.getElementById("instNote").textContent =
+        `${latestDate} 法人買超前 ${instTop.length} 名`;
+
+    document.getElementById("gainNote").textContent =
+        `${latestDate} 漲幅前 ${gainTop.length} 名`;
+
+    document.getElementById("volumeNote").textContent =
+        `${latestDate} 成交量前 ${volumeTop.length} 名`;
+}
+
+function renderCompactTable(tableId, data, type) {
+    const tableBody = document.getElementById(tableId);
     tableBody.innerHTML = "";
 
     if (data.length === 0) {
         tableBody.innerHTML = `
             <tr>
-                <td colspan="12">查無資料</td>
+                <td colspan="9">查無資料</td>
             </tr>
         `;
         return;
     }
 
-    data.forEach(item => {
+    data.forEach((item, index) => {
         const row = document.createElement("tr");
 
+        const lastColumn = type === "inst"
+            ? formatPercentFromDecimal(item.inst_total_ratio)
+            : formatPercentFromDecimal(item.turnover_rate);
+
         row.innerHTML = `
+            <td>${index + 1}</td>
             <td>${formatValue(item.date)}</td>
             <td>${formatValue(item.stock_id)}</td>
             <td>${formatValue(item.stock_name)}</td>
@@ -154,24 +172,28 @@ function renderTable(data) {
                 ${formatPercent(item.price_change_pct)}
             </td>
             <td>${formatNumber(item.volume)}</td>
-            <td class="${getNetClass(item.foreign_net_buy)}">
-                ${formatNumber(item.foreign_net_buy)}
-            </td>
-            <td class="${getNetClass(item.investment_trust_net_buy)}">
-                ${formatNumber(item.investment_trust_net_buy)}
-            </td>
-            <td class="${getNetClass(item.dealer_net_buy)}">
-                ${formatNumber(item.dealer_net_buy)}
-            </td>
             <td class="${getNetClass(item.total_inst_net_buy)}">
                 ${formatNumber(item.total_inst_net_buy)}
             </td>
-            <td>${formatPercentFromDecimal(item.inst_total_ratio)}</td>
-            <td>${formatPercentFromDecimal(item.inst_to_issued_ratio)}</td>
+            <td>${lastColumn}</td>
         `;
 
         tableBody.appendChild(row);
     });
+}
+
+function showLoadError(tableId, colspan) {
+    const tableBody = document.getElementById(tableId);
+
+    if (!tableBody) {
+        return;
+    }
+
+    tableBody.innerHTML = `
+        <tr>
+            <td colspan="${colspan}">雲端資料讀取失敗，請稍後再試。</td>
+        </tr>
+    `;
 }
 
 function formatValue(value) {
