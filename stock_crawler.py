@@ -60,11 +60,10 @@ HEADERS = {
 }
 
 TODAY_JSON_PATH = "data/tpex_stock_today.json"
-HISTORY_JSON_PATH = "data/tpex_stock_history.json"
 RANKING_SOURCE_JSON_PATH = "data/ranking_source.json"
 
-DAYS = 1   # 每日更新只抓當日
-
+DAYS = 1
+MAX_RANKING_SOURCE_DAYS = 30
 # =========================================================
 # 安全轉換
 # =========================================================
@@ -102,6 +101,30 @@ def safe_int(value):
 # =========================================================
 # 找最近 N 個交易日
 # =========================================================
+
+def normalize_stock_df(df):
+    """
+    統一股票資料格式：
+    1. date 統一成 YYYY-MM-DD
+    2. stock_id 統一成 4 碼字串
+    避免 JSON 讀回來後型態不同，導致 date + stock_id 去重失敗。
+    """
+
+    df = df.copy()
+
+    if "date" in df.columns:
+        df["date"] = df["date"].astype(str).str.slice(0, 10)
+
+    if "stock_id" in df.columns:
+        df["stock_id"] = (
+            df["stock_id"]
+            .astype(str)
+            .str.replace(".0", "", regex=False)
+            .str.strip()
+            .str.zfill(4)
+        )
+
+    return df
 
 def get_trading_days(target_days):
 
@@ -511,33 +534,34 @@ def clean_data(df):
 
     print("\n===== 清洗資料 =====\n")
 
+    df = normalize_stock_df(df)
+
     df = df.drop_duplicates(subset=["date", "stock_id"])
     df = df.dropna(subset=["close"])
+
     df = df[df["stock_id"].str.len() == 4]
+
     df = df[
         ~df["stock_name"].str.contains(
             "|".join(["債", "特", "購", "售", "牛", "熊", "ETF"]),
             na=False
         )
     ]
+
     df = df[df["volume"] > 0]
     df = df[df["close"] > 0]
+
     df = df.reset_index(drop=True)
 
     print("清洗完成")
 
     return df
 
-# =========================================================
-# JSON
-# =========================================================
-
 def save_json(df):
     """
-    同時產生：
+    每日更新使用：
     1. tpex_stock_today.json：只放今日資料，每次覆蓋
-    2. tpex_stock_history.json：累積歷史資料
-    3. ranking_source.json：給 generate_ranking_json.py 計算排行榜用
+    2. ranking_source.json：累積最近 MAX_RANKING_SOURCE_DAYS 個交易日，給排行榜計算使用
     """
 
     import os
@@ -545,43 +569,42 @@ def save_json(df):
     os.makedirs("data", exist_ok=True)
 
     # ==============================
-    # 1. 今日資料
+    # 1. 儲存今日資料
     # ==============================
-    today_df = df.copy()
-    today_df["date"] = today_df["date"].astype(str)
-    today_df = today_df.astype(object).where(pd.notnull(today_df), None)
+    today_df = normalize_stock_df(df)
+
+    today_clean_df = today_df.astype(object).where(pd.notnull(today_df), None)
 
     with open(TODAY_JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(
-            today_df.to_dict(orient="records"),
+            today_clean_df.to_dict(orient="records"),
             f,
             ensure_ascii=False,
             indent=2,
             allow_nan=False
         )
 
-    print(f"今日 JSON 儲存完成：{TODAY_JSON_PATH}，共 {len(today_df)} 筆")
+    print(f"今日 JSON 儲存完成：{TODAY_JSON_PATH}，共 {len(today_clean_df)} 筆")
 
     # ==============================
-    # 2. 歷史資料
+    # 2. 讀取舊 ranking_source.json
     # ==============================
-    if os.path.exists(HISTORY_JSON_PATH):
+    if os.path.exists(RANKING_SOURCE_JSON_PATH):
         try:
-            old_df = pd.read_json(HISTORY_JSON_PATH)
-            old_df["date"] = old_df["date"].astype(str)
-            print(f"讀取舊歷史 JSON：{len(old_df)} 筆")
+            old_df = pd.read_json(RANKING_SOURCE_JSON_PATH)
+            old_df = normalize_stock_df(old_df)
+            print(f"讀取舊排行榜來源 JSON：{len(old_df)} 筆")
         except Exception as e:
-            print("舊歷史 JSON 讀取失敗，改用空資料：", e)
+            print("舊排行榜來源 JSON 讀取失敗，改用空資料：", e)
             old_df = pd.DataFrame()
     else:
         old_df = pd.DataFrame()
 
-    new_df = df.copy()
-    new_df["date"] = new_df["date"].astype(str)
-
-    combined_df = pd.concat([old_df, new_df], ignore_index=True)
-
-    combined_df["date"] = combined_df["date"].astype(str)
+    # ==============================
+    # 3. 合併舊資料與今日資料
+    # ==============================
+    combined_df = pd.concat([old_df, today_df], ignore_index=True)
+    combined_df = normalize_stock_df(combined_df)
 
     combined_df = combined_df.drop_duplicates(
         subset=["date", "stock_id"],
@@ -593,31 +616,21 @@ def save_json(df):
         ascending=[False, True]
     )
 
-    combined_clean_df = combined_df.astype(object).where(pd.notnull(combined_df), None)
-
-    with open(HISTORY_JSON_PATH, "w", encoding="utf-8") as f:
-        json.dump(
-            combined_clean_df.to_dict(orient="records"),
-            f,
-            ensure_ascii=False,
-            indent=2,
-            allow_nan=False
-        )
-
-    print(f"歷史 JSON 儲存完成：{HISTORY_JSON_PATH}，共 {len(combined_clean_df)} 筆")
-
     # ==============================
-    # 3. 排行榜來源資料
+    # 4. 只保留最近 MAX_RANKING_SOURCE_DAYS 個交易日
     # ==============================
-    ranking_source_df = combined_df.copy()
-    ranking_source_df["date"] = ranking_source_df["date"].astype(str)
-
-    ranking_source_df = ranking_source_df.sort_values(
-        by=["date", "stock_id"],
-        ascending=[False, True]
+    latest_dates = (
+        combined_df["date"]
+        .dropna()
+        .drop_duplicates()
+        .sort_values(ascending=False)
+        .head(MAX_RANKING_SOURCE_DAYS)
+        .tolist()
     )
 
-    ranking_source_df = ranking_source_df.astype(object).where(pd.notnull(ranking_source_df), None)
+    combined_df = combined_df[combined_df["date"].isin(latest_dates)]
+
+    ranking_source_df = combined_df.astype(object).where(pd.notnull(combined_df), None)
 
     with open(RANKING_SOURCE_JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(
@@ -628,7 +641,85 @@ def save_json(df):
             allow_nan=False
         )
 
-    print(f"排行榜來源 JSON 儲存完成：{RANKING_SOURCE_JSON_PATH}，共 {len(ranking_source_df)} 筆")
+    print(
+        f"排行榜來源 JSON 儲存完成：{RANKING_SOURCE_JSON_PATH}，"
+        f"共 {len(ranking_source_df)} 筆，"
+        f"保留 {len(latest_dates)} 個交易日"
+    )
+
+def save_history_json(df):
+    """
+    backfill 使用：
+    只更新 ranking_source.json，
+    不覆蓋 tpex_stock_today.json。
+    """
+
+    import os
+
+    os.makedirs("data", exist_ok=True)
+
+    new_df = normalize_stock_df(df)
+
+    # ==============================
+    # 1. 讀取舊 ranking_source.json
+    # ==============================
+    if os.path.exists(RANKING_SOURCE_JSON_PATH):
+        try:
+            old_df = pd.read_json(RANKING_SOURCE_JSON_PATH)
+            old_df = normalize_stock_df(old_df)
+            print(f"讀取舊排行榜來源 JSON：{len(old_df)} 筆")
+        except Exception as e:
+            print("舊排行榜來源 JSON 讀取失敗，改用空資料：", e)
+            old_df = pd.DataFrame()
+    else:
+        old_df = pd.DataFrame()
+
+    # ==============================
+    # 2. 合併舊資料與補抓資料
+    # ==============================
+    combined_df = pd.concat([old_df, new_df], ignore_index=True)
+    combined_df = normalize_stock_df(combined_df)
+
+    combined_df = combined_df.drop_duplicates(
+        subset=["date", "stock_id"],
+        keep="last"
+    )
+
+    combined_df = combined_df.sort_values(
+        by=["date", "stock_id"],
+        ascending=[False, True]
+    )
+
+    # ==============================
+    # 3. 只保留最近 MAX_RANKING_SOURCE_DAYS 個交易日
+    # ==============================
+    latest_dates = (
+        combined_df["date"]
+        .dropna()
+        .drop_duplicates()
+        .sort_values(ascending=False)
+        .head(MAX_RANKING_SOURCE_DAYS)
+        .tolist()
+    )
+
+    combined_df = combined_df[combined_df["date"].isin(latest_dates)]
+
+    ranking_source_df = combined_df.astype(object).where(pd.notnull(combined_df), None)
+
+    with open(RANKING_SOURCE_JSON_PATH, "w", encoding="utf-8") as f:
+        json.dump(
+            ranking_source_df.to_dict(orient="records"),
+            f,
+            ensure_ascii=False,
+            indent=2,
+            allow_nan=False
+        )
+
+    print(
+        f"排行榜來源 JSON 儲存完成：{RANKING_SOURCE_JSON_PATH}，"
+        f"共 {len(ranking_source_df)} 筆，"
+        f"保留 {len(latest_dates)} 個交易日"
+    )
 
 def save_sqlite(daily_df, stock_info_df):
 
@@ -744,6 +835,7 @@ def backfill_history(days=30):
         s for s in inst_df["stock_id"].unique().tolist()
         if len(str(s)) == 4
     ]
+
     print(f"股票數量：{len(stock_ids)} 支")
 
     # 5. 行情歷史（twstock）
@@ -775,67 +867,8 @@ def backfill_history(days=30):
     df = clean_data(df)
     print(f"清洗後筆數：{len(df)}")
 
-    # 9. 存入 SQLite
-    conn = sqlite3.connect(DB_NAME)
-
-    # 自動重建表（schema 不符時）
-    table_dropped = False
-
-    try:
-        existing_cols = set(
-            row[1] for row in
-            conn.execute(
-                "PRAGMA table_info(daily_stock_data)"
-            ).fetchall()
-        )
-        new_cols = set(df.columns)
-
-        if existing_cols and not new_cols.issubset(existing_cols):
-            print("偵測到欄位變更，重建資料表...")
-            conn.execute("DROP TABLE IF EXISTS daily_stock_data")
-            conn.commit()
-            table_dropped = True
-
-    except Exception:
-        pass
-
-    # 表存在才需要刪除舊區間資料
-    # 表剛被刪掉就不需要（to_sql 會自動建立）
-    if not table_dropped:
-        try:
-            conn.execute(
-                "DELETE FROM daily_stock_data "
-                "WHERE date >= ? AND date <= ?",
-                (start_date, end_date)
-            )
-            conn.commit()
-        except Exception:
-            pass
-
-    df.to_sql(
-        "daily_stock_data",
-        conn,
-        if_exists="append",
-        index=False
-    )
-
-    # 更新 stock_info
-    stock_info_df = (
-        df[["stock_id", "stock_name", "issued_shares"]]
-        .copy()
-        .drop_duplicates(subset=["stock_id"])
-    )
-
-    stock_info_df.to_sql(
-        "stock_info",
-        conn,
-        if_exists="replace",
-        index=False
-    )
-
-    conn.close()
-
-    save_json(df)
+    # 9. 存成 JSON，不使用 SQLite
+    save_history_json(df)
 
     print(
         f"\n===== 歷史補抓完成 ====="
