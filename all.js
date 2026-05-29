@@ -109,19 +109,15 @@ function renderTable(data) {
     data.forEach(item => {
         const row = document.createElement("tr");
 
+        row.classList.add("clickable-row");
+        row.addEventListener("click", () => {
+            window.location.href = `stock.html?id=${encodeURIComponent(item.stock_id)}`;
+        });
+
         row.innerHTML = `
             <td>${formatValue(item.date)}</td>
-            <td>
-                <a class="stock-link" href="stock.html?id=${encodeURIComponent(item.stock_id)}">
-                    ${formatValue(item.stock_id)}
-                </a>
-            </td>
-
-            <td>
-                <a class="stock-link" href="stock.html?id=${encodeURIComponent(item.stock_id)}">
-                    ${formatValue(item.stock_name)}
-                </a>
-            </td>
+            <td>${formatValue(item.stock_id)}</td>
+            <td>${formatValue(item.stock_name)}</td>
             <td>${formatNumber(item.close)}</td>
             <td class="${getChangeClass(item.price_change_pct)}">
                 ${formatPercent(item.price_change_pct)}

@@ -553,3 +553,11 @@ table td:nth-child(12) {
 .stock-link:hover {
     text-decoration: underline;
 }
+
+.clickable-row {
+    cursor: pointer;
+}
+
+.clickable-row:hover {
+    background-color: #f1f5f9;
+}

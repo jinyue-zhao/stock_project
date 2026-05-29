@@ -150,6 +150,11 @@ function renderCompactTable(tableId, data, type) {
     data.forEach((item, index) => {
         const row = document.createElement("tr");
 
+        row.classList.add("clickable-row");
+        row.addEventListener("click", () => {
+            window.location.href = `stock.html?id=${encodeURIComponent(item.stock_id)}`;
+        });
+
         const lastColumn = type === "inst"
             ? formatPercentFromDecimal(item.inst_total_ratio)
             : formatPercentFromDecimal(item.turnover_rate);
@@ -157,17 +162,8 @@ function renderCompactTable(tableId, data, type) {
         row.innerHTML = `
             <td>${index + 1}</td>
             <td>${formatValue(item.date)}</td>
-            <td>
-                <a class="stock-link" href="stock.html?id=${encodeURIComponent(item.stock_id)}">
-                    ${formatValue(item.stock_id)}
-                </a>
-            </td>
-
-            <td>
-                <a class="stock-link" href="stock.html?id=${encodeURIComponent(item.stock_id)}">
-                    ${formatValue(item.stock_name)}
-                </a>
-            </td>
+            <td>${formatValue(item.stock_id)}</td>
+            <td>${formatValue(item.stock_name)}</td>
             <td>${formatNumber(item.close)}</td>
             <td class="${getChangeClass(item.price_change_pct)}">
                 ${formatPercent(item.price_change_pct)}

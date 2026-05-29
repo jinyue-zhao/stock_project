@@ -45,7 +45,7 @@ async function loadRankingData() {
 
         document.getElementById("rankingTable").innerHTML = `
             <tr>
-                <td colspan="12">排行榜資料讀取失敗，請確認 data/stock_ranking.json 是否存在。</td>
+                <td colspan="13">排行榜資料讀取失敗，請確認 data/stock_ranking.json 是否存在。</td>
             </tr>
         `;
     }
@@ -117,20 +117,15 @@ function renderRankingTable(data) {
     data.forEach((item, index) => {
         const row = document.createElement("tr");
 
+        row.classList.add("clickable-row");
+        row.addEventListener("click", () => {
+            window.location.href = `stock.html?id=${encodeURIComponent(item.stock_id)}`;
+        });
+
         row.innerHTML = `
             <td>${index + 1}</td>
             <td>${formatValue(item.date)}</td>
-            <td>
-                <a class="stock-link" href="stock.html?id=${encodeURIComponent(item.stock_id)}">
-                    ${formatValue(item.stock_id)}
-                </a>
-            </td>
-
-            <td>
-                <a class="stock-link" href="stock.html?id=${encodeURIComponent(item.stock_id)}">
-                    ${formatValue(item.stock_name)}
-                </a>
-            </td>
+            <td>${formatValue(item.stock_id)}</td>
             <td>${formatValue(item.stock_name)}</td>
             <td>${formatNumber(item.close)}</td>
 
