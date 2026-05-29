@@ -61,6 +61,7 @@ HEADERS = {
 
 TODAY_JSON_PATH = "data/tpex_stock_today.json"
 HISTORY_JSON_PATH = "data/tpex_stock_history.json"
+RANKING_SOURCE_JSON_PATH = "data/ranking_source.json"
 
 DAYS = 1   # 每日更新只抓當日
 
@@ -534,17 +535,20 @@ def clean_data(df):
 def save_json(df):
     """
     同時產生：
-    1. tpex_stock_today.json：只放今天資料，每次覆蓋
-    2. tpex_stock_history.json：累積歷史資料，不覆蓋舊資料
+    1. tpex_stock_today.json：只放今日資料，每次覆蓋
+    2. tpex_stock_history.json：累積歷史資料
+    3. ranking_source.json：給 generate_ranking_json.py 計算排行榜用
     """
 
     import os
 
-    # 確保 data 資料夾存在
     os.makedirs("data", exist_ok=True)
 
-    # 先處理今日資料
+    # ==============================
+    # 1. 今日資料
+    # ==============================
     today_df = df.copy()
+    today_df["date"] = today_df["date"].astype(str)
     today_df = today_df.astype(object).where(pd.notnull(today_df), None)
 
     with open(TODAY_JSON_PATH, "w", encoding="utf-8") as f:
@@ -558,10 +562,13 @@ def save_json(df):
 
     print(f"今日 JSON 儲存完成：{TODAY_JSON_PATH}，共 {len(today_df)} 筆")
 
-    # 再處理歷史資料
+    # ==============================
+    # 2. 歷史資料
+    # ==============================
     if os.path.exists(HISTORY_JSON_PATH):
         try:
             old_df = pd.read_json(HISTORY_JSON_PATH)
+            old_df["date"] = old_df["date"].astype(str)
             print(f"讀取舊歷史 JSON：{len(old_df)} 筆")
         except Exception as e:
             print("舊歷史 JSON 讀取失敗，改用空資料：", e)
@@ -569,7 +576,12 @@ def save_json(df):
     else:
         old_df = pd.DataFrame()
 
-    combined_df = pd.concat([old_df, df], ignore_index=True)
+    new_df = df.copy()
+    new_df["date"] = new_df["date"].astype(str)
+
+    combined_df = pd.concat([old_df, new_df], ignore_index=True)
+
+    combined_df["date"] = combined_df["date"].astype(str)
 
     combined_df = combined_df.drop_duplicates(
         subset=["date", "stock_id"],
@@ -581,18 +593,42 @@ def save_json(df):
         ascending=[False, True]
     )
 
-    combined_df = combined_df.astype(object).where(pd.notnull(combined_df), None)
+    combined_clean_df = combined_df.astype(object).where(pd.notnull(combined_df), None)
 
     with open(HISTORY_JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(
-            combined_df.to_dict(orient="records"),
+            combined_clean_df.to_dict(orient="records"),
             f,
             ensure_ascii=False,
             indent=2,
             allow_nan=False
         )
 
-    print(f"歷史 JSON 儲存完成：{HISTORY_JSON_PATH}，共 {len(combined_df)} 筆")
+    print(f"歷史 JSON 儲存完成：{HISTORY_JSON_PATH}，共 {len(combined_clean_df)} 筆")
+
+    # ==============================
+    # 3. 排行榜來源資料
+    # ==============================
+    ranking_source_df = combined_df.copy()
+    ranking_source_df["date"] = ranking_source_df["date"].astype(str)
+
+    ranking_source_df = ranking_source_df.sort_values(
+        by=["date", "stock_id"],
+        ascending=[False, True]
+    )
+
+    ranking_source_df = ranking_source_df.astype(object).where(pd.notnull(ranking_source_df), None)
+
+    with open(RANKING_SOURCE_JSON_PATH, "w", encoding="utf-8") as f:
+        json.dump(
+            ranking_source_df.to_dict(orient="records"),
+            f,
+            ensure_ascii=False,
+            indent=2,
+            allow_nan=False
+        )
+
+    print(f"排行榜來源 JSON 儲存完成：{RANKING_SOURCE_JSON_PATH}，共 {len(ranking_source_df)} 筆")
 
 def save_sqlite(daily_df, stock_info_df):
 
