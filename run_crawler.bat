@@ -19,7 +19,7 @@ echo ==============================
 echo 開始上傳到 GitHub
 echo ==============================
 
-git add data/tpex_stock_today.json data/tpex_stock_history.json data/stock_ranking.json
+git add .
 git commit -m "Update stock data"
 git push
 

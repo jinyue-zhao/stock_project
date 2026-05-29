@@ -81,27 +81,23 @@ function filterRanking(keyword) {
 function updateRankingStats(data) {
     document.getElementById("rankingCount").textContent = data.length + " 筆";
 
-    const validChange = data.filter(item =>
-        item.price_change_pct !== null &&
-        item.price_change_pct !== undefined &&
-        !isNaN(Number(item.price_change_pct))
-    );
+    const validScores = data.filter(item => !isNaN(Number(item.total_score ?? item.score)));
 
-    const avgChange = validChange.length > 0
-        ? validChange.reduce((sum, item) => sum + Number(item.price_change_pct), 0) / validChange.length
+    const avgScore = validScores.length > 0
+        ? validScores.reduce((sum, item) => sum + Number(item.total_score ?? item.score), 0) / validScores.length
         : 0;
 
-    const maxUp = validChange.length > 0
-        ? Math.max(...validChange.map(item => Number(item.price_change_pct)))
+    const maxScore = validScores.length > 0
+        ? Math.max(...validScores.map(item => Number(item.total_score ?? item.score)))
         : 0;
 
     const instBuyCount = data.filter(item => Number(item.total_inst_net_buy) > 0).length;
 
     const latestDate = data.length > 0 ? data[0].date : "--";
 
-    document.getElementById("rankingAvgChange").textContent = avgChange.toFixed(2) + "%";
+    document.getElementById("rankingAvgChange").textContent = avgScore.toFixed(2) + " 分";
     document.getElementById("rankingInstBuy").textContent = instBuyCount + " 家";
-    document.getElementById("rankingMaxUp").textContent = maxUp.toFixed(2) + "%";
+    document.getElementById("rankingMaxUp").textContent = maxScore.toFixed(2) + " 分";
     document.getElementById("rankingDate").textContent = latestDate;
 }
 
@@ -112,7 +108,7 @@ function renderRankingTable(data) {
     if (data.length === 0) {
         tableBody.innerHTML = `
             <tr>
-                <td colspan="12">查無資料</td>
+                <td colspan="13">查無資料</td>
             </tr>
         `;
         return;
@@ -127,24 +123,27 @@ function renderRankingTable(data) {
             <td>${formatValue(item.stock_id)}</td>
             <td>${formatValue(item.stock_name)}</td>
             <td>${formatNumber(item.close)}</td>
+
             <td class="${getChangeClass(item.price_change_pct)}">
                 ${formatPercent(item.price_change_pct)}
             </td>
-            <td>${formatNumber(item.volume)}</td>
-            <td class="${getNetClass(item.foreign_net_buy)}">
-                ${formatNumber(item.foreign_net_buy)}
+
+            <td>${formatScore(item.chip_score)}</td>
+            <td>${formatScore(item.price_score)}</td>
+            <td>${formatScore(item.volume_score)}</td>
+            <td>${formatScore(item.psych_score)}</td>
+
+            <td>
+                <strong>${formatScore(item.total_score ?? item.score)}</strong>
             </td>
-            <td class="${getNetClass(item.investment_trust_net_buy)}">
-                ${formatNumber(item.investment_trust_net_buy)}
-            </td>
+
             <td class="${getNetClass(item.total_inst_net_buy)}">
                 ${formatNumber(item.total_inst_net_buy)}
             </td>
-            <td>${formatPercentFromDecimal(item.inst_total_ratio)}</td>
-            <td><strong>${formatNumber(item.score)}</strong></td>
+
+            <td>${formatNumber(item.volume)}</td>
         `;
 
         tableBody.appendChild(row);
     });
 }
-

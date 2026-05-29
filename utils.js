@@ -68,3 +68,13 @@ function getLatestDate(data) {
 
     return dates.sort().reverse()[0];
 }
+
+function formatScore(value) {
+    const num = Number(value);
+
+    if (isNaN(num)) {
+        return "--";
+    }
+
+    return num.toFixed(2);
+}
