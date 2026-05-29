@@ -5,6 +5,30 @@ const DATA_URL = "data/tpex_stock.json";
 
 window.addEventListener("DOMContentLoaded", () => {
     loadFromCloudJson();
+
+    const moreBtn = document.getElementById("moreBtn");
+
+    if (moreBtn) {
+        moreBtn.addEventListener("click", () => {
+            const keyword = document.getElementById("keywordInput").value.trim();
+
+            if (keyword) {
+                window.location.href = `all.html?q=${encodeURIComponent(keyword)}`;
+            } else {
+                window.location.href = "all.html";
+            }
+        });
+    }
+
+    const keywordInput = document.getElementById("keywordInput");
+
+    if (keywordInput) {
+        keywordInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                filterData();
+            }
+        });
+    }
 });
 
 async function loadFromCloudJson(keyword = "") {
@@ -28,14 +52,13 @@ async function loadFromCloudJson(keyword = "") {
             );
         }
 
-        filtered = filtered.sort((a, b) => {
-            const da = String(a.date || "");
-            const db = String(b.date || "");
-            const sa = String(a.stock_id || "");
-            const sb = String(b.stock_id || "");
+        const latestDate = getLatestDate(filtered);
 
-            return (db + sb).localeCompare(da + sa);
-        });
+        filtered = filtered
+            .filter(item => item.date === latestDate)
+            .sort((a, b) => {
+                return Number(b.total_inst_net_buy || 0) - Number(a.total_inst_net_buy || 0);
+            });
 
         stockData = filtered.slice(0, 10);
 
@@ -43,7 +66,7 @@ async function loadFromCloudJson(keyword = "") {
         renderTable(stockData);
 
         document.getElementById("displayNote").textContent =
-            `目前顯示前 ${stockData.length} 筆資料`;
+            `目前顯示 ${latestDate} 法人買超前 ${stockData.length} 筆資料`;
 
     } catch (error) {
         console.error("雲端資料讀取失敗：", error);
@@ -56,6 +79,14 @@ async function loadFromCloudJson(keyword = "") {
             </tr>
         `;
     }
+}
+
+function getLatestDate(data) {
+    const dates = data
+        .map(item => item.date)
+        .filter(date => date !== null && date !== undefined && date !== "");
+
+    return dates.sort().reverse()[0];
 }
 
 function filterData() {
@@ -183,7 +214,7 @@ function formatPercentFromDecimal(value) {
         return "--";
     }
 
-    return (num * 100).toFixed(3) + "%";
+    return num.toFixed(3) + "%";
 }
 
 function getChangeClass(value) {
@@ -204,18 +235,4 @@ function getNetClass(value) {
     }
 
     return num > 0 ? "positive" : "negative";
-}
-
-const moreBtn = document.getElementById("moreBtn");
-
-if (moreBtn) {
-    moreBtn.addEventListener("click", () => {
-        const keyword = document.getElementById("keywordInput").value.trim();
-
-        if (keyword) {
-            window.location.href = `all.html?q=${encodeURIComponent(keyword)}`;
-        } else {
-            window.location.href = "all.html";
-        }
-    });
 }

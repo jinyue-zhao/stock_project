@@ -11,11 +11,23 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("keywordInput").value = keyword;
 
     loadAllData(keyword);
+
+    document.getElementById("keywordInput").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            const inputKeyword = document.getElementById("keywordInput").value.trim();
+            loadAllData(inputKeyword);
+        }
+    });
 });
 
 async function loadAllData(keyword = "") {
     try {
         const response = await fetch(DATA_URL + "?t=" + Date.now());
+
+        if (!response.ok) {
+            throw new Error("找不到 data/tpex_stock.json");
+        }
+
         const data = await response.json();
 
         let filtered = data;
@@ -193,7 +205,7 @@ function formatPercentFromDecimal(value) {
         return "--";
     }
 
-    return (num * 100).toFixed(3) + "%";
+    return num.toFixed(3) + "%";
 }
 
 function getChangeClass(value) {

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股票排行｜櫃買市場資料查詢系統</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="page">
+
+        <header class="site-header">
+            <div class="main-nav">
+                <div class="brand">
+                    <img class="site-logo" src="assets/logo.png" alt="櫃買市場資料查詢系統圖標">
+
+                    <div class="brand-text">
+                        <h1>櫃買股票分析排行系統</h1>
+                    </div>
+                </div>
+
+                <nav class="nav-links">
+                    <a href="index.html">首頁</a>
+                    <a href="all.html">全部資料</a>
+                    <a href="ranking.html" class="active">股票排行</a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="search-card">
+            <h2>今日股票排行榜</h2>
+
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="keywordInput" 
+                    placeholder="輸入股票代號或名稱，例如 1815、富喬"
+                >
+
+                <button id="searchBtn" type="button">查詢</button>
+            </div>
+
+            <p class="hint">
+                此頁依照資料中的綜合條件排序，顯示今日表現較突出的股票。
+            </p>
+        </section>
+
+        <section class="stats-grid five">
+            <div class="stat-card">
+                <h3>排行筆數</h3>
+                <p id="rankingCount">--</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>平均漲跌幅</h3>
+                <p id="rankingAvgChange">--</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>法人買超家數</h3>
+                <p id="rankingInstBuy">--</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>最高漲幅</h3>
+                <p id="rankingMaxUp">--</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>資料日期</h3>
+                <p id="rankingDate">--</p>
+            </div>
+        </section>
+
+        <section class="table-card">
+            <div class="table-title-row">
+                <h2 id="tableTitle">股票排行前 100 名</h2>
+                <p id="displayNote">資料載入中...</p>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>排名</th>
+                            <th>日期</th>
+                            <th>股票代號</th>
+                            <th>股票名稱</th>
+                            <th>收盤價</th>
+                            <th>漲跌幅</th>
+                            <th>成交量</th>
+                            <th>外資買賣超</th>
+                            <th>投信買賣超</th>
+                            <th>三大法人合計</th>
+                            <th>法人/成交量</th>
+                            <th>綜合分數</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="rankingTable">
+                        <tr>
+                            <td colspan="12">資料載入中...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="ranking.js"></script>
+</body>
+</html>
