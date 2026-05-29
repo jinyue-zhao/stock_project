@@ -485,3 +485,61 @@ table th:nth-child(12),
 table td:nth-child(12) {
     width: 130px;
 }
+
+.stats-grid.five {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.positive {
+    color: #dc2626;
+    font-weight: 700;
+}
+
+.negative {
+    color: #059669;
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .main-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 16px 0;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        gap: 18px;
+        padding-left: 0;
+    }
+
+    .nav-links a {
+        padding: 8px 0;
+        font-size: 16px;
+    }
+
+    .nav-links a.active::after {
+        bottom: 0;
+    }
+
+    .stats-grid,
+    .stats-grid.five {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .stats-grid,
+    .stats-grid.five {
+        grid-template-columns: 1fr;
+    }
+}

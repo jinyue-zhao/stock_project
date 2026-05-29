@@ -1,4 +1,4 @@
-const DATA_URL = "data/tpex_stock.json";
+const DATA_URL = "data/stock_ranking.json";
 
 let rankingData = [];
 let originalData = [];
