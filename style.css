@@ -261,7 +261,7 @@ table {
 }
 
 th, td {
-    padding: 14px 12px;
+    padding: 8px 10px;
     border-bottom: 1px solid #e5e7eb;
     text-align: center;
     white-space: nowrap;
@@ -558,10 +558,107 @@ table td:nth-child(12) {
     cursor: pointer;
 }
 
-.clickable-row:hover {
-    background-color: #f1f5f9;
+.clickable-row {
+    cursor: pointer;
 }
 
 .table-card + .table-card {
     margin-top: 18px;
+}
+
+.score-formula-card {
+    margin: 0 0 18px 0;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.score-cell {
+    background: #fff7ed;
+    color: #c2410c;
+    font-weight: 800;
+}
+
+.clickable-row:hover .score-cell {
+    background: #ffedd5;
+}
+
+/* ==============================
+   每 5 列分組底色：今日全部資料、排行榜
+   ============================== */
+
+/* 第 1~5、11~15、21~25... 列：白色 */
+.all-data-table tbody tr:nth-child(10n + 1) td,
+.all-data-table tbody tr:nth-child(10n + 2) td,
+.all-data-table tbody tr:nth-child(10n + 3) td,
+.all-data-table tbody tr:nth-child(10n + 4) td,
+.all-data-table tbody tr:nth-child(10n + 5) td,
+.ranking-table tbody tr:nth-child(10n + 1) td,
+.ranking-table tbody tr:nth-child(10n + 2) td,
+.ranking-table tbody tr:nth-child(10n + 3) td,
+.ranking-table tbody tr:nth-child(10n + 4) td,
+.ranking-table tbody tr:nth-child(10n + 5) td {
+    background-color: #ffffff;
+}
+
+/* 第 6~10、16~20、26~30... 列：淺灰色 */
+.all-data-table tbody tr:nth-child(10n + 6) td,
+.all-data-table tbody tr:nth-child(10n + 7) td,
+.all-data-table tbody tr:nth-child(10n + 8) td,
+.all-data-table tbody tr:nth-child(10n + 9) td,
+.all-data-table tbody tr:nth-child(10n + 10) td,
+.ranking-table tbody tr:nth-child(10n + 6) td,
+.ranking-table tbody tr:nth-child(10n + 7) td,
+.ranking-table tbody tr:nth-child(10n + 8) td,
+.ranking-table tbody tr:nth-child(10n + 9) td,
+.ranking-table tbody tr:nth-child(10n + 10) td {
+    background-color: #eef2f7;
+}
+
+/* 滑鼠移到可點擊列時，稍微加深 */
+.all-data-table tbody tr.clickable-row:hover td,
+.ranking-table tbody tr.clickable-row:hover td {
+    background-color: #dbe3ee;
+}
+
+/* ==============================
+   排行榜總分欄：每 5 列用不同深淺
+   ============================== */
+
+/* 第 1~5、11~15、21~25... 列：原色 */
+.ranking-table tbody tr:nth-child(10n + 1) td.score-cell,
+.ranking-table tbody tr:nth-child(10n + 2) td.score-cell,
+.ranking-table tbody tr:nth-child(10n + 3) td.score-cell,
+.ranking-table tbody tr:nth-child(10n + 4) td.score-cell,
+.ranking-table tbody tr:nth-child(10n + 5) td.score-cell {
+    background-color: #eff6ff;
+    color: #1d4ed8;
+    font-weight: 800;
+}
+
+/* 第 6~10、16~20、26~30... 列：比原色深一點 */
+.ranking-table tbody tr:nth-child(10n + 6) td.score-cell,
+.ranking-table tbody tr:nth-child(10n + 7) td.score-cell,
+.ranking-table tbody tr:nth-child(10n + 8) td.score-cell,
+.ranking-table tbody tr:nth-child(10n + 9) td.score-cell,
+.ranking-table tbody tr:nth-child(10n + 10) td.score-cell {
+    background-color: #dbeafe;
+    color: #1e40af;
+    font-weight: 800;
+}
+
+/* 滑鼠移到列時，總分欄再稍微加深 */
+.ranking-table tbody tr.clickable-row:hover td.score-cell {
+    background-color: #bfdbfe;
+    color: #1e3a8a;
+}
+
+.click-hint {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: #64748b;
 }

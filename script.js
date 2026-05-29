@@ -9,23 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (moreBtn) {
         moreBtn.addEventListener("click", () => {
-            const keyword = document.getElementById("keywordInput").value.trim();
-
-            if (keyword) {
-                window.location.href = `all.html?q=${encodeURIComponent(keyword)}`;
-            } else {
-                window.location.href = "all.html";
-            }
-        });
-    }
-
-    const keywordInput = document.getElementById("keywordInput");
-
-    if (keywordInput) {
-        keywordInput.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                filterData();
-            }
+            window.location.href = "all.html";
         });
     }
 });
@@ -65,11 +49,6 @@ async function loadFromCloudJson(keyword = "") {
         showLoadError("gainTopTable", 8);
         showLoadError("volumeTopTable", 8);
     }
-}
-
-function filterData() {
-    const keyword = document.getElementById("keywordInput").value.trim();
-    loadFromCloudJson(keyword);
 }
 
 function updateStats(data) {
@@ -155,25 +134,60 @@ function renderCompactTable(tableId, data, type) {
             window.location.href = `stock.html?id=${encodeURIComponent(item.stock_id)}`;
         });
 
-        const lastColumn = type === "inst"
-            ? formatPercentFromDecimal(item.inst_total_ratio)
-            : formatPercentFromDecimal(item.turnover_rate);
+        let rowContent = "";
 
-        row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${formatValue(item.stock_id)}</td>
-            <td>${formatValue(item.stock_name)}</td>
-            <td>${formatNumber(item.close)}</td>
-            <td class="${getChangeClass(item.price_change_pct)}">
-                ${formatPercent(item.price_change_pct)}
-            </td>
-            <td>${formatNumber(item.volume)}</td>
-            <td class="${getNetClass(item.total_inst_net_buy)}">
-                ${formatNumber(item.total_inst_net_buy)}
-            </td>
-            <td>${lastColumn}</td>
-        `;
+        if (type === "inst") {
+            rowContent = `
+                <td>${index + 1}</td>
+                <td>${formatValue(item.stock_id)}</td>
+                <td>${formatValue(item.stock_name)}</td>
+                <td class="${getNetClass(item.total_inst_net_buy)}">
+                    ${formatNumber(item.total_inst_net_buy)}
+                </td>
+                <td>${formatNumber(item.close)}</td>
+                <td class="${getChangeClass(item.price_change_pct)}">
+                    ${formatPercent(item.price_change_pct)}
+                </td>
+                <td>${formatNumber(item.volume)}</td>
+                <td>${formatPercentFromDecimal(item.inst_total_ratio)}</td>
+            `;
+        }
 
+        if (type === "gain") {
+            rowContent = `
+                <td>${index + 1}</td>
+                <td>${formatValue(item.stock_id)}</td>
+                <td>${formatValue(item.stock_name)}</td>
+                <td class="${getChangeClass(item.price_change_pct)}">
+                    ${formatPercent(item.price_change_pct)}
+                </td>
+                <td>${formatNumber(item.close)}</td>
+                <td>${formatNumber(item.volume)}</td>
+                <td class="${getNetClass(item.total_inst_net_buy)}">
+                    ${formatNumber(item.total_inst_net_buy)}
+                </td>
+                <td>${formatPercentFromDecimal(item.turnover_rate)}</td>
+            `;
+        }
+
+        if (type === "volume") {
+            rowContent = `
+                <td>${index + 1}</td>
+                <td>${formatValue(item.stock_id)}</td>
+                <td>${formatValue(item.stock_name)}</td>
+                <td>${formatNumber(item.volume)}</td>
+                <td>${formatNumber(item.close)}</td>
+                <td class="${getChangeClass(item.price_change_pct)}">
+                    ${formatPercent(item.price_change_pct)}
+                </td>
+                <td class="${getNetClass(item.total_inst_net_buy)}">
+                    ${formatNumber(item.total_inst_net_buy)}
+                </td>
+                <td>${formatPercentFromDecimal(item.turnover_rate)}</td>
+            `;
+        }
+
+        row.innerHTML = rowContent;
         tableBody.appendChild(row);
     });
 }

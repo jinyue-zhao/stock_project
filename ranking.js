@@ -5,18 +5,6 @@ let allRankingData = [];
 
 window.addEventListener("DOMContentLoaded", () => {
     loadRankingData();
-
-    document.getElementById("searchBtn").addEventListener("click", () => {
-        const keyword = document.getElementById("keywordInput").value.trim();
-        filterRanking(keyword);
-    });
-
-    document.getElementById("keywordInput").addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-            const keyword = document.getElementById("keywordInput").value.trim();
-            filterRanking(keyword);
-        }
-    });
 });
 
 async function loadRankingData() {
@@ -45,37 +33,10 @@ async function loadRankingData() {
 
         document.getElementById("rankingTable").innerHTML = `
             <tr>
-                <td colspan="12">排行榜資料讀取失敗，請確認 data/stock_ranking.json 是否存在。</td>
+                <td colspan="13">排行榜資料讀取失敗，請確認 data/stock_ranking.json 是否存在。</td>
             </tr>
         `;
     }
-}
-
-function filterRanking(keyword) {
-    if (!keyword) {
-        rankingData = allRankingData;
-        renderRankingTable(rankingData);
-        updateRankingStats(rankingData);
-
-        const latestDate = rankingData.length > 0 ? rankingData[0].date : "--";
-
-        document.getElementById("displayNote").textContent =
-            `目前顯示 ${latestDate} 股票排行前 ${rankingData.length} 名`;
-        return;
-    }
-
-    const filtered = allRankingData.filter(item =>
-        String(item.stock_id || "").includes(keyword) ||
-        String(item.stock_name || "").includes(keyword)
-    );
-
-    rankingData = filtered;
-
-    renderRankingTable(rankingData);
-    updateRankingStats(rankingData);
-
-    document.getElementById("displayNote").textContent =
-        `搜尋「${keyword}」，共找到 ${rankingData.length} 筆資料`;
 }
 
 function updateRankingStats(data) {
@@ -126,10 +87,9 @@ function renderRankingTable(data) {
             <td>${index + 1}</td>
             <td>${formatValue(item.stock_id)}</td>
             <td>${formatValue(item.stock_name)}</td>
-            <td>${formatNumber(item.close)}</td>
 
-            <td class="${getChangeClass(item.price_change_pct)}">
-                ${formatPercent(item.price_change_pct)}
+            <td class="score-cell">
+                <strong>${formatScore(item.total_score ?? item.score)}</strong>
             </td>
 
             <td>${formatScore(item.chip_score)}</td>
@@ -137,8 +97,10 @@ function renderRankingTable(data) {
             <td>${formatScore(item.volume_score)}</td>
             <td>${formatScore(item.psych_score)}</td>
 
-            <td>
-                <strong>${formatScore(item.total_score ?? item.score)}</strong>
+            <td>${formatNumber(item.close)}</td>
+
+            <td class="${getChangeClass(item.price_change_pct)}">
+                ${formatPercent(item.price_change_pct)}
             </td>
 
             <td class="${getNetClass(item.total_inst_net_buy)}">

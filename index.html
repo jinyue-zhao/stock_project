@@ -30,20 +30,10 @@
         </header>
 
         <section class="search-card">
-            <h2>股票法人買賣超查詢</h2>
-
-            <div class="search-box">
-                <input 
-                    type="text" 
-                    id="keywordInput" 
-                    placeholder="輸入股票代號或名稱，例如 1815、富喬"
-                >
-
-                <button onclick="filterData()" type="button">查詢</button>
-            </div>
+            <h2>今日市場儀表板</h2>
 
             <p class="hint">
-                資料來源為上櫃股票三大法人合計買賣超資料。
+                本頁整理最新交易日的法人買超、漲幅與成交量排行。點擊任一股票列，可查看該股票最近 30 日資料；若要查詢特定股票，請前往「近日全部資料」頁面。
             </p>
         </section>
 
@@ -77,9 +67,9 @@
         <section class="strategy-card">
             <h2>系統說明</h2>
             <p>
-                本系統可讀取股票當日行情資料，並提供市場篩選、股票代號搜尋、
-                股票名稱搜尋與基本統計摘要。若資料欄位為空值，系統會以「--」表示。
-                後續可加入股票排行、法人買賣超排序與技術指標評分功能。
+                本系統提供上櫃股票今日市場儀表板、近日全部資料查詢、股票多因子排行與個股
+                30 日資料檢視。首頁顯示法人買超、漲幅與成交量前 10 名，股票排行則依籌碼、
+                價格動能、價量換手與市場心理等指標進行綜合評分。
             </p>
         </section>
 
@@ -90,16 +80,16 @@
     </div>
 
     <div class="table-wrapper">
-        <table>
+        <table class="dashboard-table">
             <thead>
                 <tr>
                     <th>排名</th>
                     <th>股票代號</th>
                     <th>股票名稱</th>
+                    <th>三大法人合計</th>
                     <th>收盤價</th>
                     <th>漲跌幅</th>
                     <th>成交量</th>
-                    <th>三大法人合計</th>
                     <th>法人/成交量</th>
                 </tr>
             </thead>
@@ -120,14 +110,14 @@
     </div>
 
     <div class="table-wrapper">
-        <table>
+        <table class="dashboard-table">
             <thead>
                 <tr>
                     <th>排名</th>
                     <th>股票代號</th>
                     <th>股票名稱</th>
-                    <th>收盤價</th>
                     <th>漲跌幅</th>
+                    <th>收盤價</th>
                     <th>成交量</th>
                     <th>三大法人合計</th>
                     <th>週轉率</th>
@@ -150,15 +140,15 @@
             </div>
 
             <div class="table-wrapper">
-                <table>
+                <table class="dashboard-table">
                     <thead>
                         <tr>
                             <th>排名</th>
                             <th>股票代號</th>
                             <th>股票名稱</th>
+                            <th>成交量</th>
                             <th>收盤價</th>
                             <th>漲跌幅</th>
-                            <th>成交量</th>
                             <th>三大法人合計</th>
                             <th>週轉率</th>
                         </tr>

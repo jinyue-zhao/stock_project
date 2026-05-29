@@ -32,18 +32,8 @@
         <section class="search-card">
             <h2>今日股票排行榜</h2>
 
-            <div class="search-box">
-                <input 
-                    type="text" 
-                    id="keywordInput" 
-                    placeholder="輸入股票代號或名稱，例如 1815、富喬"
-                >
-
-                <button id="searchBtn" type="button">查詢</button>
-            </div>
-
             <p class="hint">
-                此頁依照資料中的綜合條件排序，顯示今日表現較突出的股票。
+                本頁依照多因子評分排序，顯示今日表現較突出的股票。點擊任一股票列，可查看該股票最近 30 日資料。
             </p>
         </section>
 
@@ -76,24 +66,25 @@
 
         <section class="table-card">
             <div class="table-title-row">
+                <p class="click-hint">提示：點擊任一股票列可查看該股票最近 30 日資料。</p>
                 <h2 id="tableTitle">股票排行前 100 名</h2>
                 <p id="displayNote">資料載入中...</p>
             </div>
 
             <div class="table-wrapper">
-                <table>
+                <table class="ranking-table">
                     <thead>
                         <tr>
                             <th>排名</th>
                             <th>股票代號</th>
                             <th>股票名稱</th>
-                            <th>收盤價</th>
-                            <th>漲跌幅</th>
+                            <th>總分</th>
                             <th>籌碼分數</th>
                             <th>價格分數</th>
                             <th>價量分數</th>
                             <th>心理分數</th>
-                            <th>總分</th>
+                            <th>收盤價</th>
+                            <th>漲跌幅</th>
                             <th>三大法人合計</th>
                             <th>成交量</th>
                         </tr>
@@ -101,11 +92,55 @@
 
                     <tbody id="rankingTable">
                         <tr>
-                            <td colspan="12">資料載入中...</td>
+                            <td colspan="13">資料載入中...</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+            <div class="score-formula-card">
+                <h3>多因子總分計算方式</h3>
+
+                <p>
+                    <strong>總分 = 籌碼穩定度分數 + 價格動能分數 + 價量換手分數 + 市場心理分數</strong>，
+                    滿分為 100 分。分數越高，代表該股票在法人籌碼、價格趨勢、量能配合與市場心理面向的綜合表現越強。
+                </p>
+
+                <div class="score-formula-grid">
+                    <div class="score-formula-item">
+                        <h4>籌碼穩定度：40 分</h4>
+                        <p>
+                            主要觀察法人是否持續買超、買超占成交量比例是否夠高、投信是否連續買進，
+                            以及外資是否由賣超轉為買超。法人連續買超與集中買進通常代表籌碼較穩定。
+                        </p>
+                    </div>
+
+                    <div class="score-formula-item">
+                        <h4>價格動能：25 分</h4>
+                        <p>
+                            主要觀察股價是否呈現多頭排列，也就是收盤價、5 日均線、10 日均線與 20 日均線的相對位置；
+                            同時也會評估股價是否接近 20 日高點，以及當日漲幅是否夠強。
+                        </p>
+                    </div>
+
+                    <div class="score-formula-item">
+                        <h4>價量與換手率：20 分</h4>
+                        <p>
+                            主要觀察今日成交量是否大於 5 日均量、股價上漲時是否伴隨量增，
+                            以及換手率是否足夠。若量能放大且價格同步上漲，代表市場參與度較高。
+                        </p>
+                    </div>
+
+                    <div class="score-formula-item">
+                        <h4>市場心理與風險：15 分</h4>
+                        <p>
+                            主要觀察收盤價是否接近當日最高價，以及是否出現「法人買超、融資減少」的現象。
+                            若法人進場但融資下降，通常代表籌碼有機會由散戶轉向法人。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
     </div>
