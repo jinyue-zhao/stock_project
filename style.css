@@ -52,10 +52,11 @@ body {
 
 /* 左側品牌區 */
 .site-logo {
-    width: 46px;
-    height: 46px;
-    border-radius: 12px;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
     object-fit: cover;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.18);
     display: block;
 }
 
