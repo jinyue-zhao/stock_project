@@ -61,9 +61,9 @@ async function loadFromCloudJson(keyword = "") {
     } catch (error) {
         console.error("雲端資料讀取失敗：", error);
 
-        showLoadError("instTopTable", 9);
-        showLoadError("gainTopTable", 9);
-        showLoadError("volumeTopTable", 9);
+        showLoadError("instTopTable", 8);
+        showLoadError("gainTopTable", 8);
+        showLoadError("volumeTopTable", 8);
     }
 }
 
@@ -141,7 +141,7 @@ function renderCompactTable(tableId, data, type) {
     if (data.length === 0) {
         tableBody.innerHTML = `
             <tr>
-                <td colspan="9">查無資料</td>
+                <td colspan="8">查無資料</td>
             </tr>
         `;
         return;
@@ -161,7 +161,6 @@ function renderCompactTable(tableId, data, type) {
 
         row.innerHTML = `
             <td>${index + 1}</td>
-            <td>${formatValue(item.date)}</td>
             <td>${formatValue(item.stock_id)}</td>
             <td>${formatValue(item.stock_name)}</td>
             <td>${formatNumber(item.close)}</td>

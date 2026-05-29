@@ -45,9 +45,9 @@ body {
 /* 主導覽列 */
 .main-nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    min-height: 78px;
+    justify-content: space-between;
+    padding-right: 40px;
 }
 
 /* 左側品牌區 */
@@ -560,4 +560,8 @@ table td:nth-child(12) {
 
 .clickable-row:hover {
     background-color: #f1f5f9;
+}
+
+.table-card + .table-card {
+    margin-top: 18px;
 }

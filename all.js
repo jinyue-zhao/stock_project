@@ -56,7 +56,7 @@ async function loadAllData(keyword = "") {
 
         document.getElementById("dataTable").innerHTML = `
             <tr>
-                <td colspan="12">雲端資料讀取失敗，請稍後再試。</td>
+                <td colspan="11">雲端資料讀取失敗，請稍後再試。</td>
             </tr>
         `;
     }
@@ -100,7 +100,7 @@ function renderTable(data) {
     if (data.length === 0) {
         tableBody.innerHTML = `
             <tr>
-                <td colspan="12">查無資料</td>
+                <td colspan="11">查無資料</td>
             </tr>
         `;
         return;
@@ -115,7 +115,6 @@ function renderTable(data) {
         });
 
         row.innerHTML = `
-            <td>${formatValue(item.date)}</td>
             <td>${formatValue(item.stock_id)}</td>
             <td>${formatValue(item.stock_name)}</td>
             <td>${formatNumber(item.close)}</td>

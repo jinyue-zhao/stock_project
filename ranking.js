@@ -45,7 +45,7 @@ async function loadRankingData() {
 
         document.getElementById("rankingTable").innerHTML = `
             <tr>
-                <td colspan="13">排行榜資料讀取失敗，請確認 data/stock_ranking.json 是否存在。</td>
+                <td colspan="12">排行榜資料讀取失敗，請確認 data/stock_ranking.json 是否存在。</td>
             </tr>
         `;
     }
@@ -108,7 +108,7 @@ function renderRankingTable(data) {
     if (data.length === 0) {
         tableBody.innerHTML = `
             <tr>
-                <td colspan="13">查無資料</td>
+                <td colspan="12">查無資料</td>
             </tr>
         `;
         return;
@@ -124,7 +124,6 @@ function renderRankingTable(data) {
 
         row.innerHTML = `
             <td>${index + 1}</td>
-            <td>${formatValue(item.date)}</td>
             <td>${formatValue(item.stock_id)}</td>
             <td>${formatValue(item.stock_name)}</td>
             <td>${formatNumber(item.close)}</td>
