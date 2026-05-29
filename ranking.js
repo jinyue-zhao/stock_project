@@ -120,7 +120,17 @@ function renderRankingTable(data) {
         row.innerHTML = `
             <td>${index + 1}</td>
             <td>${formatValue(item.date)}</td>
-            <td>${formatValue(item.stock_id)}</td>
+            <td>
+                <a class="stock-link" href="stock.html?id=${encodeURIComponent(item.stock_id)}">
+                    ${formatValue(item.stock_id)}
+                </a>
+            </td>
+
+            <td>
+                <a class="stock-link" href="stock.html?id=${encodeURIComponent(item.stock_id)}">
+                    ${formatValue(item.stock_name)}
+                </a>
+            </td>
             <td>${formatValue(item.stock_name)}</td>
             <td>${formatNumber(item.close)}</td>
 

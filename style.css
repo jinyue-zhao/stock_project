@@ -543,3 +543,13 @@ table td:nth-child(12) {
         grid-template-columns: 1fr;
     }
 }
+
+.stock-link {
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.stock-link:hover {
+    text-decoration: underline;
+}

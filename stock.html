@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個股資料｜櫃買股票分析排行系統</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="page">
+
+        <header class="site-header">
+            <div class="main-nav">
+                <div class="brand">
+                    <img class="site-logo" src="assets/logo.png" alt="櫃買市場資料查詢系統圖標">
+
+                    <div class="brand-text">
+                        <h1>櫃買股票分析排行系統</h1>
+                    </div>
+                </div>
+
+                <nav class="nav-links">
+                    <a href="index.html">首頁</a>
+                    <a href="all.html">全部資料</a>
+                    <a href="ranking.html">股票排行</a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="search-card">
+            <h2 id="stockTitle">個股資料載入中...</h2>
+
+            <p class="hint" id="stockSubtitle">
+                此頁顯示該股票最近 30 個交易日的行情、法人與量能資料。
+            </p>
+        </section>
+
+        <section class="stats-grid five">
+            <div class="stat-card">
+                <h3>資料筆數</h3>
+                <p id="stockDataCount">--</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>最新收盤價</h3>
+                <p id="latestClose">--</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>最新漲跌幅</h3>
+                <p id="latestChange">--</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>最新法人買賣超</h3>
+                <p id="latestInst">--</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>最新成交量</h3>
+                <p id="latestVolume">--</p>
+            </div>
+        </section>
+
+        <section class="table-card">
+            <div class="table-title-row">
+                <h2>最近 30 日資料</h2>
+                <p id="displayNote">資料載入中...</p>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th>收盤價</th>
+                            <th>漲跌幅</th>
+                            <th>成交量</th>
+                            <th>外資買賣超</th>
+                            <th>投信買賣超</th>
+                            <th>自營商買賣超</th>
+                            <th>三大法人合計</th>
+                            <th>法人/成交量</th>
+                            <th>週轉率</th>
+                            <th>融資餘額</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="stockTable">
+                        <tr>
+                            <td colspan="11">資料載入中...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="utils.js"></script>
+    <script src="stock.js"></script>
+</body>
+</html>

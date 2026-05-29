@@ -157,8 +157,17 @@ function renderCompactTable(tableId, data, type) {
         row.innerHTML = `
             <td>${index + 1}</td>
             <td>${formatValue(item.date)}</td>
-            <td>${formatValue(item.stock_id)}</td>
-            <td>${formatValue(item.stock_name)}</td>
+            <td>
+                <a class="stock-link" href="stock.html?id=${encodeURIComponent(item.stock_id)}">
+                    ${formatValue(item.stock_id)}
+                </a>
+            </td>
+
+            <td>
+                <a class="stock-link" href="stock.html?id=${encodeURIComponent(item.stock_id)}">
+                    ${formatValue(item.stock_name)}
+                </a>
+            </td>
             <td>${formatNumber(item.close)}</td>
             <td class="${getChangeClass(item.price_change_pct)}">
                 ${formatPercent(item.price_change_pct)}
