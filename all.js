@@ -1,4 +1,4 @@
-const DATA_URL = "data/tpex_stock.json";
+const DATA_URL = "data/tpex_stock_today.json";
 
 let allData = [];
 let currentPage = 1;

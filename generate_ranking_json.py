@@ -4,9 +4,8 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 
-INPUT_JSON = BASE_DIR / "data" / "tpex_stock.json"
+INPUT_JSON = BASE_DIR / "data" / "tpex_stock_today.json"
 OUTPUT_JSON = BASE_DIR / "data" / "stock_ranking.json"
-
 
 def safe_number(value, default=0):
     try:

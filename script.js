@@ -1,6 +1,6 @@
 let allStockData = [];
 
-const DATA_URL = "data/tpex_stock.json";
+const DATA_URL = "data/tpex_stock_today.json";
 
 window.addEventListener("DOMContentLoaded", () => {
     loadFromCloudJson();
