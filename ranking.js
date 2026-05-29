@@ -1,7 +1,7 @@
 const DATA_URL = "data/stock_ranking.json";
 
 let rankingData = [];
-let originalData = [];
+let allRankingData = [];
 
 window.addEventListener("DOMContentLoaded", () => {
     loadRankingData();
@@ -24,134 +24,68 @@ async function loadRankingData() {
         const response = await fetch(DATA_URL + "?t=" + Date.now());
 
         if (!response.ok) {
-            throw new Error("找不到 data/tpex_stock.json");
+            throw new Error("找不到 data/stock_ranking.json");
         }
 
         const data = await response.json();
 
-        originalData = data;
-
-        const latestDate = getLatestDate(data);
-
-        rankingData = data
-            .filter(item => item.date === latestDate)
-            .map(item => {
-                return {
-                    ...item,
-                    score: calculateScore(item)
-                };
-            })
-            .sort((a, b) => b.score - a.score)
-            .slice(0, 100);
+        allRankingData = data;
+        rankingData = data;
 
         updateRankingStats(rankingData);
         renderRankingTable(rankingData);
 
+        const latestDate = rankingData.length > 0 ? rankingData[0].date : "--";
+
         document.getElementById("displayNote").textContent =
-            `目前顯示 ${latestDate} 綜合排行前 ${rankingData.length} 名`;
+            `目前顯示 ${latestDate} 股票排行前 ${rankingData.length} 名`;
 
     } catch (error) {
         console.error("排行榜資料讀取失敗：", error);
 
         document.getElementById("rankingTable").innerHTML = `
             <tr>
-                <td colspan="12">排行榜資料讀取失敗，請稍後再試。</td>
+                <td colspan="12">排行榜資料讀取失敗，請確認 data/stock_ranking.json 是否存在。</td>
             </tr>
         `;
     }
 }
 
-function getLatestDate(data) {
-    const dates = data
-        .map(item => item.date)
-        .filter(date => date !== null && date !== undefined && date !== "");
-
-    return dates.sort().reverse()[0];
-}
-
-function calculateScore(item) {
-    let score = 0;
-
-    const priceChangePct = Number(item.price_change_pct);
-    const totalInstNetBuy = Number(item.total_inst_net_buy);
-    const foreignNetBuy = Number(item.foreign_net_buy);
-    const investmentTrustNetBuy = Number(item.investment_trust_net_buy);
-    const volume = Number(item.volume);
-    const instTotalRatio = Number(item.inst_total_ratio);
-    const turnoverRate = Number(item.turnover_rate);
-
-    // 價格分數
-    if (!isNaN(priceChangePct)) {
-        if (priceChangePct > 0) score += 10;
-        if (priceChangePct >= 2) score += 10;
-        if (priceChangePct >= 5) score += 10;
-    }
-
-    // 法人分數
-    if (!isNaN(totalInstNetBuy)) {
-        if (totalInstNetBuy > 0) score += 15;
-        if (totalInstNetBuy >= 1000) score += 10;
-        if (totalInstNetBuy >= 10000) score += 10;
-    }
-
-    // 外資分數
-    if (!isNaN(foreignNetBuy) && foreignNetBuy > 0) {
-        score += 10;
-    }
-
-    // 投信分數
-    if (!isNaN(investmentTrustNetBuy) && investmentTrustNetBuy > 0) {
-        score += 10;
-    }
-
-    // 成交量分數
-    if (!isNaN(volume)) {
-        if (volume >= 100000) score += 5;
-        if (volume >= 500000) score += 5;
-        if (volume >= 1000000) score += 5;
-    }
-
-    // 法人買超占成交量比例
-    if (!isNaN(instTotalRatio)) {
-        if (instTotalRatio > 0) score += 5;
-        if (instTotalRatio >= 0.1) score += 5;
-        if (instTotalRatio >= 0.2) score += 5;
-    }
-
-    // 週轉率
-    if (!isNaN(turnoverRate)) {
-        if (turnoverRate >= 1) score += 5;
-        if (turnoverRate >= 3) score += 5;
-    }
-
-    return score;
-}
-
 function filterRanking(keyword) {
     if (!keyword) {
+        rankingData = allRankingData;
         renderRankingTable(rankingData);
         updateRankingStats(rankingData);
+
+        const latestDate = rankingData.length > 0 ? rankingData[0].date : "--";
+
         document.getElementById("displayNote").textContent =
-            `目前顯示綜合排行前 ${rankingData.length} 名`;
+            `目前顯示 ${latestDate} 股票排行前 ${rankingData.length} 名`;
         return;
     }
 
-    const filtered = rankingData.filter(item =>
+    const filtered = allRankingData.filter(item =>
         String(item.stock_id || "").includes(keyword) ||
         String(item.stock_name || "").includes(keyword)
     );
 
-    renderRankingTable(filtered);
-    updateRankingStats(filtered);
+    rankingData = filtered;
+
+    renderRankingTable(rankingData);
+    updateRankingStats(rankingData);
 
     document.getElementById("displayNote").textContent =
-        `搜尋「${keyword}」，共找到 ${filtered.length} 筆資料`;
+        `搜尋「${keyword}」，共找到 ${rankingData.length} 筆資料`;
 }
 
 function updateRankingStats(data) {
     document.getElementById("rankingCount").textContent = data.length + " 筆";
 
-    const validChange = data.filter(item => !isNaN(Number(item.price_change_pct)));
+    const validChange = data.filter(item =>
+        item.price_change_pct !== null &&
+        item.price_change_pct !== undefined &&
+        !isNaN(Number(item.price_change_pct))
+    );
 
     const avgChange = validChange.length > 0
         ? validChange.reduce((sum, item) => sum + Number(item.price_change_pct), 0) / validChange.length
@@ -254,14 +188,14 @@ function formatPercentFromDecimal(value) {
         return "--";
     }
 
-    return num.toFixed(2) + "%";
+    return num.toFixed(3) + "%";
 }
 
 function getChangeClass(value) {
     const num = Number(value);
 
     if (isNaN(num) || num === 0) {
-        return "";
+        return "neutral";
     }
 
     return num > 0 ? "positive" : "negative";
@@ -271,7 +205,7 @@ function getNetClass(value) {
     const num = Number(value);
 
     if (isNaN(num) || num === 0) {
-        return "";
+        return "neutral";
     }
 
     return num > 0 ? "positive" : "negative";
