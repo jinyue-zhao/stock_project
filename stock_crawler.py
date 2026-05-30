@@ -678,12 +678,24 @@ def save_history_json(df):
     # ==============================
     # 2. 合併舊資料與補抓資料
     # ==============================
+    # 找出今日資料日期，避免 backfill 覆蓋每日更新的完整今日資料
+    today_dates = set()
+
+    if not old_df.empty and "date" in old_df.columns:
+        latest_old_date = old_df["date"].dropna().max()
+        today_dates.add(latest_old_date)
+
+    # 先移除 new_df 中與今日同日期的資料，避免 backfill 蓋掉今日完整資料
+    if today_dates:
+        new_df = new_df[~new_df["date"].isin(today_dates)]
+
+    # backfill 的新資料放後面，讓它可以覆蓋舊的歷史壞資料
     combined_df = pd.concat([old_df, new_df], ignore_index=True)
     combined_df = normalize_stock_df(combined_df)
 
     combined_df = combined_df.drop_duplicates(
         subset=["date", "stock_id"],
-        keep="first"
+        keep="last"
     )
 
     combined_df = combined_df.sort_values(
@@ -722,84 +734,6 @@ def save_history_json(df):
         f"保留 {len(latest_dates)} 個交易日"
     )
 
-def save_sqlite(daily_df, stock_info_df):
-
-    conn = sqlite3.connect(DB_NAME)
-
-    # 自動重建表（schema 不符時刪掉重來）
-    try:
-        existing_cols = set(
-            row[1] for row in
-            conn.execute(
-                "PRAGMA table_info(daily_stock_data)"
-            ).fetchall()
-        )
-        new_cols = set(daily_df.columns)
-
-        if not new_cols.issubset(existing_cols):
-            print("偵測到欄位變更，重建資料表...")
-            conn.execute("DROP TABLE IF EXISTS daily_stock_data")
-            conn.commit()
-
-    except Exception:
-        pass
-
-    # 刪除同日舊資料再寫入
-    today = daily_df["date"].iloc[0]
-
-    try:
-        conn.execute(
-            "DELETE FROM daily_stock_data WHERE date = ?",
-            (today,)
-        )
-        conn.commit()
-    except Exception:
-        pass
-
-    daily_df.to_sql(
-        "daily_stock_data",
-        conn,
-        if_exists="append",
-        index=False
-    )
-
-    stock_info_df.to_sql(
-        "stock_info",
-        conn,
-        if_exists="replace",
-        index=False
-    )
-
-    conn.close()
-
-    print(f"SQLite 儲存完成（交易日：{today}）")
-
-# =========================================================
-# 驗證
-# =========================================================
-
-def verify_sqlite():
-
-    conn = sqlite3.connect(DB_NAME)
-
-    df = pd.read_sql("""
-        SELECT date, stock_id, stock_name,
-               close, volume, market_cap,
-               turnover_rate, total_inst_net_buy,
-               inst_to_issued_ratio
-        FROM daily_stock_data
-        LIMIT 10
-    """, conn)
-
-    print("\n===== SQLite 驗證 =====\n")
-    print(df)
-
-    conn.close()
-
-# =========================================================
-# 歷史補抓（backfill）
-# 行情用 twstock，法人/融資券用 TPEx API
-# =========================================================
 
 def backfill_history(days=30):
 
@@ -892,12 +826,6 @@ def main():
 
     df = merge_data(price_df, inst_df, margin_df, issued_map)
     df = clean_data(df)
-
-    stock_info_df = (
-        df[["stock_id", "stock_name", "issued_shares"]]
-        .copy()
-        .drop_duplicates(subset=["stock_id"])
-    )
 
     print("\n===== 最終資料（前10筆）=====\n")
     print(
