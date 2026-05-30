@@ -849,3 +849,17 @@ table td:nth-child(12) {
     color: #475569;
     line-height: 1.6;
 }
+
+.score-box-rank {
+    margin-top: 6px;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.score-box-rank.ranked {
+    color: #1d4ed8;
+}
+
+.score-box-rank.unranked {
+    color: #64748b;
+}

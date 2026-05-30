@@ -56,14 +56,14 @@ async function loadStockRanking(stockId) {
         const response = await fetch(RANKING_URL + "?t=" + Date.now());
 
         if (!response.ok) {
-            throw new Error("找不到 data/stock_ranking.json");
+            throw new Error("找不到 data/stock_scores.json");
         }
 
-        const rankingData = await response.json();
+        const scoreData = await response.json();
 
         const normalizedId = String(stockId).padStart(4, "0");
 
-        const item = rankingData.find(item =>
+        const item = scoreData.find(item =>
             String(item.stock_id || "").padStart(4, "0") === normalizedId
         );
 
@@ -71,10 +71,22 @@ async function loadStockRanking(stockId) {
             scoreBox.innerHTML = `
                 <div class="score-box-title">排行榜分數</div>
                 <div class="score-box-main">--</div>
-                <div class="score-box-sub">此股票目前沒有可計算的分數資料</div>
+                <div class="score-box-sub">目前沒有可計算的分數資料</div>
             `;
             return;
         }
+
+        const position = Number(item.ranking_position);
+
+        const rankText =
+            !isNaN(position) && position <= 100
+                ? `排行榜第 ${position} 名`
+                : "未上榜";
+
+        const rankClass =
+            !isNaN(position) && position <= 100
+                ? "score-box-rank ranked"
+                : "score-box-rank unranked";
 
         scoreBox.innerHTML = `
             <div class="score-box-title">排行榜分數</div>
@@ -82,6 +94,10 @@ async function loadStockRanking(stockId) {
             <div class="score-box-main">
                 ${formatScore(item.total_score ?? item.score)}
                 <span>分</span>
+            </div>
+
+            <div class="${rankClass}">
+                ${rankText}
             </div>
 
             <div class="score-box-detail">
