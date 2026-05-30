@@ -468,9 +468,16 @@ def merge_data(price_df, inst_df, margin_df, issued_map):
 
     print("\n===== 合併資料 =====\n")
 
+    price_df = normalize_stock_df(price_df)
+    inst_df = normalize_stock_df(inst_df)
+    margin_df = normalize_stock_df(margin_df)
+
+    # 法人資料不要用 stock_name 合併，避免名稱差異造成合併失敗
+    inst_df = inst_df.drop(columns=["stock_name"], errors="ignore")
+
     df = price_df.merge(
         inst_df,
-        on=["date", "stock_id", "stock_name"],
+        on=["date", "stock_id"],
         how="left"
     )
 
@@ -480,55 +487,42 @@ def merge_data(price_df, inst_df, margin_df, issued_map):
         how="left"
     )
 
-    # 發行股數
     df["issued_shares"] = df["stock_id"].map(issued_map)
 
-    # 市值
     df["market_cap"] = df["close"] * df["issued_shares"]
 
-    # 週轉率（%）
     df["turnover_rate"] = (
         df["volume"] / df["issued_shares"]
     ) * 100
 
-    # 振幅（%）
     df["amplitude_pct"] = (
         (df["high"] - df["low"]) / df["close"]
     ) * 100
 
-    # 漲跌幅（%）
     df["price_change_pct"] = (
-        df["price_change"]
-        / (df["close"] - df["price_change"])
+        df["price_change"] / (df["close"] - df["price_change"])
     ) * 100
 
-    # 法人佔成交量
     df["inst_total_ratio"] = (
         df["total_inst_net_buy"] / df["volume"]
     )
 
-    # 外資佔成交量
     df["foreign_buy_ratio"] = (
         df["foreign_net_buy"] / df["volume"]
     )
 
-    # 投信佔成交量
     df["investment_trust_ratio"] = (
         df["investment_trust_net_buy"] / df["volume"]
     )
 
-    # 法人佔發行股數
     df["inst_to_issued_ratio"] = (
         df["total_inst_net_buy"] / df["issued_shares"]
     )
 
     print("Merge 完成")
+    print("合併後法人有值筆數：", df["total_inst_net_buy"].notna().sum())
 
     return df
-
-# =========================================================
-# 清洗
-# =========================================================
 
 def clean_data(df):
 
@@ -682,7 +676,7 @@ def save_history_json(df):
 
     combined_df = combined_df.drop_duplicates(
         subset=["date", "stock_id"],
-        keep="last"
+        keep="first"
     )
 
     combined_df = combined_df.sort_values(
