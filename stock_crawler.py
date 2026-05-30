@@ -8,12 +8,14 @@
 
 import requests
 import pandas as pd
-import sqlite3
 import json
 import time
 import sys
+import urllib3
 
 from datetime import datetime, timedelta
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 try:
     import twstock
@@ -150,7 +152,8 @@ def get_trading_days(target_days):
                     "d": date_str,
                     "s": "0,asc"
                 },
-                timeout=20
+                timeout=20,
+                verify=False
             )
 
             data = response.json()
@@ -183,7 +186,8 @@ def fetch_issued_shares_map():
         response = requests.get(
             ISSUED_SHARES_API_URL,
             headers=HEADERS,
-            timeout=30
+            timeout=30,
+            verify=False
         )
 
         for row in response.json():
@@ -233,7 +237,8 @@ def fetch_institutional_data(trading_days):
                     "d": date_str,
                     "s": "0,asc"
                 },
-                timeout=20
+                timeout=20,
+                verify=False
             )
 
             rows = response.json()["tables"][0]["data"]
@@ -292,7 +297,8 @@ def fetch_price_data(trading_days):
                     PRICE_API_URL,
                     headers=HEADERS,
                     params={"l": "zh-tw", "o": "json", "d": date_str},
-                    timeout=30
+                    timeout=30,
+                    verify=False
                 )
                 data    = response.json()
                 success = True
@@ -435,7 +441,8 @@ def fetch_margin_data(trading_days):
                 MARGIN_API_URL,
                 headers=HEADERS,
                 params={"l": "zh-tw", "o": "json", "d": date_str},
-                timeout=20
+                timeout=20,
+                verify=False
             )
 
             rows = response.json()["tables"][0]["data"]
