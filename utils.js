@@ -70,6 +70,15 @@ function getLatestDate(data) {
 }
 
 function formatScore(value) {
+    if (
+        value === null ||
+        value === undefined ||
+        value === "" ||
+        String(value) === "NaN"
+    ) {
+        return "--";
+    }
+
     const num = Number(value);
 
     if (isNaN(num)) {

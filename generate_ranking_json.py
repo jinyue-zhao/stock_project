@@ -8,6 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent
 
 INPUT_JSON = BASE_DIR / "data" / "ranking_source.json"
 OUTPUT_JSON = BASE_DIR / "data" / "stock_ranking.json"
+ALL_SCORE_JSON = BASE_DIR / "data" / "stock_scores.json"
 
 TOP_N = 100
 
@@ -425,15 +426,30 @@ def main():
             "volume",
         ],
         ascending=[False, False, False, False, False, False, False]
-    )
+    ).reset_index(drop=True)
 
-    ranking_df = ranking_df.head(TOP_N)
+    # 1. 全部股票分數：給 stock.html 個股頁使用
+    all_score_df = ranking_df.copy()
+    all_score_df["ranking_position"] = all_score_df.index + 1
+    all_score_df = all_score_df.astype(object).where(pd.notnull(all_score_df), None)
 
-    ranking_df = ranking_df.astype(object).where(pd.notnull(ranking_df), None)
+    with open(ALL_SCORE_JSON, "w", encoding="utf-8") as f:
+        json.dump(
+            all_score_df.to_dict(orient="records"),
+            f,
+            ensure_ascii=False,
+            indent=2,
+            allow_nan=False
+        )
+
+    # 2. 前 100 名排行榜：給 ranking.html 使用
+    top_ranking_df = ranking_df.head(TOP_N).copy()
+    top_ranking_df["ranking_position"] = top_ranking_df.index + 1
+    top_ranking_df = top_ranking_df.astype(object).where(pd.notnull(top_ranking_df), None)
 
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(
-            ranking_df.to_dict(orient="records"),
+            top_ranking_df.to_dict(orient="records"),
             f,
             ensure_ascii=False,
             indent=2,

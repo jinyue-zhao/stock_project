@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指標走勢圖｜櫃買股票分析排行系統</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="page">
+
+        <header class="site-header">
+            <div class="main-nav">
+                <div class="brand">
+                    <img class="site-logo" src="assets/logo.png" alt="櫃買市場資料查詢系統圖標">
+
+                    <div class="brand-text">
+                        <h1>櫃買股票分析排行系統</h1>
+                    </div>
+                </div>
+
+                <nav class="nav-links">
+                    <a href="index.html">首頁</a>
+                    <a href="all.html">近日全部資料</a>
+                    <a href="ranking.html">股票排行</a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="search-card">
+            <h2 id="chartTitle">指標走勢圖載入中...</h2>
+            <p class="hint" id="chartSubtitle">
+                顯示該股票最近 20 筆交易資料的指標變化。
+            </p>
+        </section>
+
+        <section class="table-card">
+            <div class="table-title-row">
+                <h2 id="metricTitle">折線圖</h2>
+                <p id="displayNote">資料載入中...</p>
+            </div>
+
+            <div class="chart-wrapper">
+                <canvas id="metricChart"></canvas>
+            </div>
+        </section>
+
+        <div class="more-row outside-table">
+            <button id="backBtn" type="button">返回個股資料</button>
+        </div>
+
+    </div>
+
+    <script src="utils.js"></script>
+    <script src="chart.js"></script>
+</body>
+</html>

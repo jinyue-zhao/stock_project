@@ -29,12 +29,20 @@
             </div>
         </header>
 
-        <section class="search-card">
-            <h2 id="stockTitle">個股資料載入中...</h2>
+        <section class="search-card stock-summary-card">
+            <div class="stock-summary-left">
+                <h2 id="stockTitle">個股資料載入中...</h2>
 
-            <p class="hint" id="stockSubtitle">
-                此頁顯示該股票最近 30 個交易日的行情、法人與量能資料。
-            </p>
+                <p class="hint" id="stockSubtitle">
+                    此頁顯示該股票最近 20 筆交易日的行情、法人與量能資料。
+                </p>
+            </div>
+
+            <div class="stock-score-box" id="stockScoreBox">
+                <div class="score-box-title">排行榜成績</div>
+                <div class="score-box-main">--</div>
+                <div class="score-box-sub">資料載入中...</div>
+            </div>
         </section>
 
         <section class="stats-grid five">
@@ -70,21 +78,55 @@
                 <p id="displayNote">資料載入中...</p>
             </div>
 
+            <p class="metric-click-hint">
+                提示：點擊藍色指標名稱，例如「收盤價」、「漲跌幅」、「成交量」或「三大法人合計」，即可查看該指標最近 20 日走勢圖。
+            </p>
+
             <div class="table-wrapper">
                 <table>
                     <thead>
                         <tr>
                             <th>日期</th>
-                            <th>收盤價</th>
-                            <th>漲跌幅</th>
-                            <th>成交量</th>
-                            <th>外資買賣超</th>
-                            <th>投信買賣超</th>
-                            <th>自營商買賣超</th>
-                            <th>三大法人合計</th>
-                            <th>法人/成交量</th>
-                            <th>週轉率</th>
-                            <th>融資餘額</th>
+
+                            <th>
+                                <button class="metric-header-btn" data-metric="close">收盤價</button>
+                            </th>
+
+                            <th>
+                                <button class="metric-header-btn" data-metric="price_change_pct">漲跌幅</button>
+                            </th>
+
+                            <th>
+                                <button class="metric-header-btn" data-metric="volume">成交量</button>
+                            </th>
+
+                            <th>
+                                <button class="metric-header-btn" data-metric="foreign_net_buy">外資買賣超</button>
+                            </th>
+
+                            <th>
+                                <button class="metric-header-btn" data-metric="investment_trust_net_buy">投信買賣超</button>
+                            </th>
+
+                            <th>
+                                <button class="metric-header-btn" data-metric="dealer_net_buy">自營商買賣超</button>
+                            </th>
+
+                            <th>
+                                <button class="metric-header-btn" data-metric="total_inst_net_buy">三大法人合計</button>
+                            </th>
+
+                            <th>
+                                <button class="metric-header-btn" data-metric="inst_total_ratio">法人/成交量</button>
+                            </th>
+
+                            <th>
+                                <button class="metric-header-btn" data-metric="turnover_rate">週轉率</button>
+                            </th>
+
+                            <th>
+                                <button class="metric-header-btn" data-metric="margin_balance">融資餘額</button>
+                            </th>
                         </tr>
                     </thead>
 

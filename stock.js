@@ -1,4 +1,5 @@
 const DATA_URL = "data/ranking_source.json";
+const RANKING_URL = "data/stock_scores.json";
 
 window.addEventListener("DOMContentLoaded", () => {
     loadStockData();
@@ -35,10 +36,70 @@ async function loadStockData() {
         updateStockHeader(stockData);
         updateStockStats(stockData);
         renderStockTable(stockData);
+        loadStockRanking(stockId);
+        setupMetricHeaderLinks(stockId);
 
     } catch (error) {
         console.error("個股資料讀取失敗：", error);
         showError("個股資料讀取失敗，請稍後再試。");
+    }
+}
+
+async function loadStockRanking(stockId) {
+    const scoreBox = document.getElementById("stockScoreBox");
+
+    if (!scoreBox) {
+        return;
+    }
+
+    try {
+        const response = await fetch(RANKING_URL + "?t=" + Date.now());
+
+        if (!response.ok) {
+            throw new Error("找不到 data/stock_ranking.json");
+        }
+
+        const rankingData = await response.json();
+
+        const normalizedId = String(stockId).padStart(4, "0");
+
+        const item = rankingData.find(item =>
+            String(item.stock_id || "").padStart(4, "0") === normalizedId
+        );
+
+        if (!item) {
+            scoreBox.innerHTML = `
+                <div class="score-box-title">排行榜分數</div>
+                <div class="score-box-main">--</div>
+                <div class="score-box-sub">此股票目前沒有可計算的分數資料</div>
+            `;
+            return;
+        }
+
+        scoreBox.innerHTML = `
+            <div class="score-box-title">排行榜分數</div>
+
+            <div class="score-box-main">
+                ${formatScore(item.total_score ?? item.score)}
+                <span>分</span>
+            </div>
+
+            <div class="score-box-detail">
+                <span>籌碼 ${formatScore(item.chip_score)}</span>
+                <span>價格 ${formatScore(item.price_score)}</span>
+                <span>價量 ${formatScore(item.volume_score)}</span>
+                <span>心理 ${formatScore(item.psych_score)}</span>
+            </div>
+        `;
+
+    } catch (error) {
+        console.error("排行榜分數讀取失敗：", error);
+
+        scoreBox.innerHTML = `
+            <div class="score-box-title">排行榜分數</div>
+            <div class="score-box-main">--</div>
+            <div class="score-box-sub">排行榜資料讀取失敗</div>
+        `;
     }
 }
 
@@ -119,4 +180,17 @@ function showError(message) {
             <td colspan="11">${message}</td>
         </tr>
     `;
+}
+
+function setupMetricHeaderLinks(stockId) {
+    const buttons = document.querySelectorAll(".metric-header-btn");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const metric = button.dataset.metric;
+
+            window.location.href =
+                `chart.html?id=${encodeURIComponent(stockId)}&metric=${encodeURIComponent(metric)}`;
+        });
+    });
 }

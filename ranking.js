@@ -5,7 +5,27 @@ let allRankingData = [];
 
 window.addEventListener("DOMContentLoaded", () => {
     loadRankingData();
+    setupScoreDetailToggle();
 });
+
+function setupScoreDetailToggle() {
+    const button = document.getElementById("scoreDetailBtn");
+    const panel = document.getElementById("scoreDetailPanel");
+
+    if (!button || !panel) {
+        return;
+    }
+
+    button.addEventListener("click", () => {
+        panel.classList.toggle("hidden");
+
+        if (panel.classList.contains("hidden")) {
+            button.textContent = "計算分數詳情";
+        } else {
+            button.textContent = "收起計算分數詳情";
+        }
+    });
+}
 
 async function loadRankingData() {
     try {

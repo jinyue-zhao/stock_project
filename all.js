@@ -74,6 +74,8 @@ function renderCurrentPage(shouldScrollTop = false) {
     const pageText = `第 ${currentPage} 頁 / 共 ${totalPages} 頁`;
     const noteText = `共 ${allData.length} 筆資料，目前顯示第 ${start + 1} 到 ${Math.min(end, allData.length)} 筆`;
 
+    updatePageSelects(totalPages);
+
     document.getElementById("pageInfo").textContent = pageText;
     document.getElementById("topPageInfo").textContent = pageText;
 
@@ -91,6 +93,34 @@ function renderCurrentPage(shouldScrollTop = false) {
             behavior: "smooth"
         });
     }
+}
+
+function updatePageSelects(totalPages) {
+    const selects = [
+        document.getElementById("pageSelect"),
+        document.getElementById("topPageSelect")
+    ];
+
+    selects.forEach(select => {
+        if (!select) {
+            return;
+        }
+
+        if (Number(select.dataset.totalPages) !== totalPages) {
+            select.innerHTML = "";
+
+            for (let i = 1; i <= totalPages; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.textContent = i;
+                select.appendChild(option);
+            }
+
+            select.dataset.totalPages = totalPages;
+        }
+
+        select.value = currentPage;
+    });
 }
 
 function renderTable(data) {
@@ -163,6 +193,16 @@ document.getElementById("nextBtn").addEventListener("click", goNextPage);
 
 document.getElementById("topPrevBtn").addEventListener("click", goPrevPage);
 document.getElementById("topNextBtn").addEventListener("click", goNextPage);
+
+document.getElementById("pageSelect").addEventListener("change", (event) => {
+    currentPage = Number(event.target.value);
+    renderCurrentPage(true);
+});
+
+document.getElementById("topPageSelect").addEventListener("change", (event) => {
+    currentPage = Number(event.target.value);
+    renderCurrentPage(true);
+});
 
 document.getElementById("searchBtn").addEventListener("click", () => {
     const keyword = document.getElementById("keywordInput").value.trim();
