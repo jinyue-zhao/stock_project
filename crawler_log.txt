@@ -409,3 +409,10 @@ Merge §¹¦¨
 ¤w²£¥Í¡GC:\Users\user\OneDrive\Desktop\stock_project_web\data\chart_data.json
 ªÑ²¼¼Æ¶q¡G870
 [5/5] ä¸Šå‚³åˆ° GitHub 
+warning: in the working copy of 'crawler_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main eb450fb] Auto update stock data
+ 7 files changed, 58438 insertions(+), 685153 deletions(-)
+To https://github.com/jinyue-zhao/stock_project.git
+   785d303..eb450fb  main -> main
+Finish update: é€±æ—¥ 2026/05/31  2:49:02.90 
+ 
