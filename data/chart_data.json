@@ -1532,7 +1532,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 19000.0,
         "inst_total_ratio": 0.322033898305084,
-        "turnover_rate": 1.7113949899636829,
+        "turnover_rate": 1.711394989963682,
         "margin_balance": 0.0
       },
       {
@@ -5197,7 +5197,7 @@
         "investment_trust_net_buy": 2000.0,
         "dealer_net_buy": 426.0,
         "total_inst_net_buy": 2426.0,
-        "inst_total_ratio": 0.15162499999999998,
+        "inst_total_ratio": 0.151624999999999,
         "turnover_rate": 0.35881106428900805,
         "margin_balance": 0.0
       },
@@ -5293,7 +5293,7 @@
         "investment_trust_net_buy": -2001.0,
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": -2001.0,
-        "inst_total_ratio": -0.041687499999999995,
+        "inst_total_ratio": -0.041687499999999,
         "turnover_rate": 1.012495779949229,
         "margin_balance": 0.0
       },
@@ -8773,7 +8773,7 @@
         "dealer_net_buy": 25.0,
         "total_inst_net_buy": -27975.0,
         "inst_total_ratio": -0.285459183673469,
-        "turnover_rate": 1.5429011456780959,
+        "turnover_rate": 1.542901145678095,
         "margin_balance": 0.0
       },
       {
@@ -9051,7 +9051,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 8000.0,
         "inst_total_ratio": 0.051282051282051,
-        "turnover_rate": 3.5095986510722588,
+        "turnover_rate": 3.509598651072258,
         "margin_balance": 0.0
       },
       {
@@ -9413,7 +9413,7 @@
       {
         "date": "2026-05-29",
         "close": 6.5600000000000005,
-        "price_change_pct": -0.6060606060605931,
+        "price_change_pct": -0.6060606060606061,
         "volume": 35573.0,
         "foreign_net_buy": 0.0,
         "investment_trust_net_buy": 0.0,
@@ -10698,7 +10698,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 27000.0,
         "inst_total_ratio": 0.169811320754716,
-        "turnover_rate": 1.5899999999999999,
+        "turnover_rate": 1.589999999999999,
         "margin_balance": 0.0
       },
       {
@@ -14937,7 +14937,7 @@
         "investment_trust_net_buy": -49.0,
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": -49.0,
-        "inst_total_ratio": -0.0030624999999999997,
+        "inst_total_ratio": -0.003062499999999,
         "turnover_rate": 0.599388750844248,
         "margin_balance": null
       },
@@ -15177,7 +15177,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 9000.0,
         "inst_total_ratio": 0.054545454545454,
-        "turnover_rate": 3.5206008492115988,
+        "turnover_rate": 3.520600849211598,
         "margin_balance": 0.0
       },
       {
@@ -15325,7 +15325,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 2020.0,
         "inst_total_ratio": 0.034237288135593,
-        "turnover_rate": 1.5786271648129029,
+        "turnover_rate": 1.578627164812902,
         "margin_balance": 0.0
       },
       {
@@ -18309,7 +18309,7 @@
         "investment_trust_net_buy": 86000.0,
         "dealer_net_buy": 15683.0,
         "total_inst_net_buy": 101683.0,
-        "inst_total_ratio": 0.19859960937499999,
+        "inst_total_ratio": 0.19859960937499901,
         "turnover_rate": 4.654545454545454,
         "margin_balance": 0.0
       },
@@ -19382,7 +19382,7 @@
         "investment_trust_net_buy": 13000.0,
         "dealer_net_buy": -225.0,
         "total_inst_net_buy": 12775.0,
-        "inst_total_ratio": 0.15968749999999998,
+        "inst_total_ratio": 0.159687499999999,
         "turnover_rate": 0.9249960265639431,
         "margin_balance": 0.0
       },
@@ -19526,7 +19526,7 @@
         "dealer_net_buy": -403.0,
         "total_inst_net_buy": -11403.0,
         "inst_total_ratio": -0.080872340425531,
-        "turnover_rate": 1.6303054968189499,
+        "turnover_rate": 1.630305496818949,
         "margin_balance": 0.0
       },
       {
@@ -29468,7 +29468,7 @@
         "investment_trust_net_buy": -19000.0,
         "dealer_net_buy": 19082.0,
         "total_inst_net_buy": 82.0,
-        "inst_total_ratio": 8.308004052684905e-05,
+        "inst_total_ratio": 8.308004052684906e-05,
         "turnover_rate": 13.801976870991158,
         "margin_balance": 0.0
       },
@@ -30898,7 +30898,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 17000.0,
         "inst_total_ratio": 0.134920634920634,
-        "turnover_rate": 2.5101724739506848,
+        "turnover_rate": 2.510172473950684,
         "margin_balance": 0.0
       },
       {
@@ -32475,7 +32475,7 @@
         "dealer_net_buy": -14.0,
         "total_inst_net_buy": -14.0,
         "inst_total_ratio": -0.000144329896907,
-        "turnover_rate": 1.5855686704969099,
+        "turnover_rate": 1.585568670496909,
         "margin_balance": 0.0
       },
       {
@@ -33269,7 +33269,7 @@
         "investment_trust_net_buy": -2000.0,
         "dealer_net_buy": -91.0,
         "total_inst_net_buy": -2091.0,
-        "inst_total_ratio": -0.13068749999999998,
+        "inst_total_ratio": -0.130687499999999,
         "turnover_rate": 0.37439753586517704,
         "margin_balance": 0.0
       },
@@ -34181,7 +34181,7 @@
         "investment_trust_net_buy": -169000.0,
         "dealer_net_buy": 24.0,
         "total_inst_net_buy": -168976.0,
-        "inst_total_ratio": -0.33727744510978,
+        "inst_total_ratio": -0.33727744510977997,
         "turnover_rate": 5.553398117657418,
         "margin_balance": 0.0
       },
@@ -35229,7 +35229,7 @@
         "dealer_net_buy": 183.0,
         "total_inst_net_buy": 16183.0,
         "inst_total_ratio": 0.059937037037037004,
-        "turnover_rate": 5.3351562969604895,
+        "turnover_rate": 5.335156296960489,
         "margin_balance": 0.0
       },
       {
@@ -35372,7 +35372,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": -15000.0,
         "inst_total_ratio": -0.055555555555555004,
-        "turnover_rate": 5.3351562969604895,
+        "turnover_rate": 5.335156296960489,
         "margin_balance": 0.0
       },
       {
@@ -39611,7 +39611,7 @@
         "investment_trust_net_buy": 208999.0,
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 208999.0,
-        "inst_total_ratio": 0.30780412371134,
+        "inst_total_ratio": 0.30780412371133997,
         "turnover_rate": 3.872829732381191,
         "margin_balance": 0.0
       },
@@ -40523,7 +40523,7 @@
         "investment_trust_net_buy": -48000.0,
         "dealer_net_buy": -359.0,
         "total_inst_net_buy": -48359.0,
-        "inst_total_ratio": -0.18890234374999998,
+        "inst_total_ratio": -0.188902343749999,
         "turnover_rate": 6.729448920170546,
         "margin_balance": 6.0
       },
@@ -46670,7 +46670,7 @@
         "investment_trust_net_buy": 28000.0,
         "dealer_net_buy": -221.0,
         "total_inst_net_buy": 27779.0,
-        "inst_total_ratio": 0.22223199999999999,
+        "inst_total_ratio": 0.222231999999999,
         "turnover_rate": 2.273942963980234,
         "margin_balance": 0.0
       },
@@ -46684,7 +46684,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 11000.0,
         "inst_total_ratio": 0.12087912087912,
-        "turnover_rate": 1.65543047777761,
+        "turnover_rate": 1.6554304777776099,
         "margin_balance": 0.0
       },
       {
@@ -47226,7 +47226,7 @@
         "investment_trust_net_buy": -40000.0,
         "dealer_net_buy": -1.0,
         "total_inst_net_buy": -40001.0,
-        "inst_total_ratio": -0.06400159999999999,
+        "inst_total_ratio": -0.064001599999999,
         "turnover_rate": 7.815142983667789,
         "margin_balance": 1.0
       },
@@ -47899,7 +47899,7 @@
         "investment_trust_net_buy": -1000.0,
         "dealer_net_buy": 991.0,
         "total_inst_net_buy": -9.0,
-        "inst_total_ratio": -6.000000000000001e-05,
+        "inst_total_ratio": -6.0000000000000015e-05,
         "turnover_rate": 2.518431814818567,
         "margin_balance": 0.0
       },
@@ -51752,7 +51752,7 @@
         "investment_trust_net_buy": 463888.0,
         "dealer_net_buy": 85271.0,
         "total_inst_net_buy": 549159.0,
-        "inst_total_ratio": 0.42903046874999995,
+        "inst_total_ratio": 0.42903046874999906,
         "turnover_rate": 20.55403068556203,
         "margin_balance": 16.0
       },
@@ -53847,7 +53847,7 @@
         "dealer_net_buy": 1099.0,
         "total_inst_net_buy": 34099.0,
         "inst_total_ratio": 0.21179503105590003,
-        "turnover_rate": 2.5169757901166108,
+        "turnover_rate": 2.51697579011661,
         "margin_balance": 0.0
       },
       {
@@ -58597,7 +58597,7 @@
       {
         "date": "2026-05-08",
         "close": 7.8100000000000005,
-        "price_change_pct": 10.0,
+        "price_change_pct": 10.000000000000012,
         "volume": 15000.0,
         "foreign_net_buy": -1000.0,
         "investment_trust_net_buy": -1000.0,
@@ -58610,7 +58610,7 @@
       {
         "date": "2026-05-11",
         "close": 8.59,
-        "price_change_pct": 9.987195902688864,
+        "price_change_pct": 9.987195902688851,
         "volume": 175000.0,
         "foreign_net_buy": 5000.0,
         "investment_trust_net_buy": 5000.0,
@@ -62639,7 +62639,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 2000.0,
         "inst_total_ratio": 0.013605442176870002,
-        "turnover_rate": 1.6685701987914099,
+        "turnover_rate": 1.668570198791409,
         "margin_balance": null
       },
       {
@@ -62826,7 +62826,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": -24000.0,
         "inst_total_ratio": -0.324324324324324,
-        "turnover_rate": 1.7463768521241,
+        "turnover_rate": 1.7463768521240999,
         "margin_balance": 0.0
       },
       {
@@ -62839,7 +62839,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": -14000.0,
         "inst_total_ratio": -0.189189189189189,
-        "turnover_rate": 1.7463768521241,
+        "turnover_rate": 1.7463768521240999,
         "margin_balance": 0.0
       },
       {
@@ -63368,7 +63368,7 @@
         "investment_trust_net_buy": 44000.0,
         "dealer_net_buy": 581.0,
         "total_inst_net_buy": 44581.0,
-        "inst_total_ratio": 0.35664799999999997,
+        "inst_total_ratio": 0.356647999999999,
         "turnover_rate": 1.052749655348712,
         "margin_balance": 0.0
       },
@@ -65684,7 +65684,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": -2000.0,
         "inst_total_ratio": -0.018018018018018,
-        "turnover_rate": 1.52892561983471,
+        "turnover_rate": 1.5289256198347099,
         "margin_balance": 0.0
       },
       {
@@ -67603,7 +67603,7 @@
         "investment_trust_net_buy": 0.0,
         "dealer_net_buy": -1.0,
         "total_inst_net_buy": -1.0,
-        "inst_total_ratio": -7.692307692307694e-05,
+        "inst_total_ratio": -7.692307692307695e-05,
         "turnover_rate": 0.288825276726274,
         "margin_balance": 0.0
       },
@@ -69072,7 +69072,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": -3000.0,
         "inst_total_ratio": -0.030845791605831,
-        "turnover_rate": 3.6439409113426597,
+        "turnover_rate": 3.64394091134266,
         "margin_balance": 0.0
       }
     ]
@@ -70940,7 +70940,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 5000.0,
         "inst_total_ratio": 0.05434782608695601,
-        "turnover_rate": 1.5846367674071349,
+        "turnover_rate": 1.584636767407134,
         "margin_balance": 0.0
       },
       {
@@ -74802,7 +74802,7 @@
         "investment_trust_net_buy": -2000.0,
         "dealer_net_buy": 3.0,
         "total_inst_net_buy": -1997.0,
-        "inst_total_ratio": -0.12481249999999999,
+        "inst_total_ratio": -0.12481249999999901,
         "turnover_rate": 0.5109423248623031,
         "margin_balance": 0.0
       },
@@ -76593,7 +76593,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 5000.0,
         "inst_total_ratio": 0.051020408163265,
-        "turnover_rate": 1.59870083697209,
+        "turnover_rate": 1.5987008369720899,
         "margin_balance": 0.0
       },
       {
@@ -76788,7 +76788,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 0.0,
         "inst_total_ratio": 0.0,
-        "turnover_rate": 2.5611839939246748,
+        "turnover_rate": 2.561183993924674,
         "margin_balance": 0.0
       },
       {
@@ -78669,7 +78669,7 @@
         "dealer_net_buy": -479.0,
         "total_inst_net_buy": -11479.0,
         "inst_total_ratio": -0.065971264367816,
-        "turnover_rate": 2.67902508121757,
+        "turnover_rate": 2.6790250812175698,
         "margin_balance": 0.0
       },
       {
@@ -79431,7 +79431,7 @@
       {
         "date": "2026-05-13",
         "close": 4.8100000000000005,
-        "price_change_pct": 9.81735159817351,
+        "price_change_pct": 9.81735159817353,
         "volume": 224000.0,
         "foreign_net_buy": null,
         "investment_trust_net_buy": null,
@@ -79444,7 +79444,7 @@
       {
         "date": "2026-05-14",
         "close": 5.07,
-        "price_change_pct": 5.4054054054054195,
+        "price_change_pct": 5.4054054054054,
         "volume": 300000.0,
         "foreign_net_buy": 10000.0,
         "investment_trust_net_buy": 10000.0,
@@ -79567,7 +79567,7 @@
         "investment_trust_net_buy": 0.0,
         "dealer_net_buy": 1.0,
         "total_inst_net_buy": 1.0,
-        "inst_total_ratio": 6.4516129032258055e-06,
+        "inst_total_ratio": 6.451612903225805e-06,
         "turnover_rate": 1.8332543732933582,
         "margin_balance": 0.0
       },
@@ -79728,7 +79728,7 @@
         "investment_trust_net_buy": 0.0,
         "dealer_net_buy": -447.0,
         "total_inst_net_buy": -447.0,
-        "inst_total_ratio": -0.055874999999999994,
+        "inst_total_ratio": -0.055874999999999,
         "turnover_rate": 0.22349515751645302,
         "margin_balance": 0.0
       },
@@ -81939,7 +81939,7 @@
         "investment_trust_net_buy": -129000.0,
         "dealer_net_buy": 759.0,
         "total_inst_net_buy": -128241.0,
-        "inst_total_ratio": -0.5009414062499999,
+        "inst_total_ratio": -0.500941406249999,
         "turnover_rate": 4.491035428392589,
         "margin_balance": 0.0
       },
@@ -83621,7 +83621,7 @@
         "dealer_net_buy": -92.0,
         "total_inst_net_buy": 34908.0,
         "inst_total_ratio": 0.12881180811808102,
-        "turnover_rate": 4.931756141947226,
+        "turnover_rate": 4.9317561419472264,
         "margin_balance": 0.0
       },
       {
@@ -83660,7 +83660,7 @@
         "dealer_net_buy": -2001.0,
         "total_inst_net_buy": 3999.0,
         "inst_total_ratio": 0.027770833333333002,
-        "turnover_rate": 2.6205641492265688,
+        "turnover_rate": 2.620564149226568,
         "margin_balance": 0.0
       },
       {
@@ -84124,7 +84124,7 @@
         "investment_trust_net_buy": -106000.0,
         "dealer_net_buy": 166.0,
         "total_inst_net_buy": -105834.0,
-        "inst_total_ratio": -0.10668749999999999,
+        "inst_total_ratio": -0.106687499999999,
         "turnover_rate": 20.188042663032384,
         "margin_balance": 16.0
       },
@@ -84978,7 +84978,7 @@
       {
         "date": "2026-05-18",
         "close": 5.5600000000000005,
-        "price_change_pct": -1.243339253996452,
+        "price_change_pct": -1.243339253996437,
         "volume": 5000.0,
         "foreign_net_buy": null,
         "investment_trust_net_buy": null,
@@ -84991,7 +84991,7 @@
       {
         "date": "2026-05-20",
         "close": 5.5,
-        "price_change_pct": -1.079136690647475,
+        "price_change_pct": -1.07913669064749,
         "volume": 17000.0,
         "foreign_net_buy": null,
         "investment_trust_net_buy": null,
@@ -85941,7 +85941,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 6000.0,
         "inst_total_ratio": 0.0625,
-        "turnover_rate": 1.5723270440251569,
+        "turnover_rate": 1.572327044025156,
         "margin_balance": 0.0
       },
       {
@@ -86639,7 +86639,7 @@
         "investment_trust_net_buy": 5000.0,
         "dealer_net_buy": 766.0,
         "total_inst_net_buy": 5766.0,
-        "inst_total_ratio": 0.023063999999999998,
+        "inst_total_ratio": 0.023063999999999002,
         "turnover_rate": 2.64754248593501,
         "margin_balance": 20.0
       },
@@ -87583,7 +87583,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 46000.0,
         "inst_total_ratio": 0.291139240506329,
-        "turnover_rate": 1.99427614976615,
+        "turnover_rate": 1.9942761497661499,
         "margin_balance": 0.0
       },
       {
@@ -94436,7 +94436,7 @@
         "investment_trust_net_buy": -45969.0,
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": -45969.0,
-        "inst_total_ratio": -0.5223749999999999,
+        "inst_total_ratio": -0.522374999999999,
         "turnover_rate": 9.940339887330767,
         "margin_balance": null
       },
@@ -100423,7 +100423,7 @@
         "dealer_net_buy": -126000.0,
         "total_inst_net_buy": -136000.0,
         "inst_total_ratio": -0.421052631578947,
-        "turnover_rate": 1.88318976197764,
+        "turnover_rate": 1.8831897619776399,
         "margin_balance": 0.0
       },
       {
@@ -100714,7 +100714,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 2000.0,
         "inst_total_ratio": 0.055555555555555004,
-        "turnover_rate": 1.2608863085084079,
+        "turnover_rate": 1.260886308508407,
         "margin_balance": 0.0
       },
       {
@@ -105032,7 +105032,7 @@
         "dealer_net_buy": -37.0,
         "total_inst_net_buy": -37.0,
         "inst_total_ratio": -0.000596774193548,
-        "turnover_rate": 1.5696202531645569,
+        "turnover_rate": 1.569620253164556,
         "margin_balance": null
       },
       {
@@ -106525,7 +106525,7 @@
         "investment_trust_net_buy": 89002.0,
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 89002.0,
-        "inst_total_ratio": 0.14240319999999998,
+        "inst_total_ratio": 0.142403199999999,
         "turnover_rate": 12.281637158346717,
         "margin_balance": 1.0
       },
@@ -108581,7 +108581,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 2012.0,
         "inst_total_ratio": 0.008314049586776001,
-        "turnover_rate": 4.5505998687245945,
+        "turnover_rate": 4.550599868724594,
         "margin_balance": 0.0
       },
       {
@@ -111367,7 +111367,7 @@
       {
         "date": "2026-05-15",
         "close": 6.5600000000000005,
-        "price_change_pct": 0.7680491551459261,
+        "price_change_pct": 0.7680491551459401,
         "volume": 62000.0,
         "foreign_net_buy": 0.0,
         "investment_trust_net_buy": 0.0,
@@ -111380,7 +111380,7 @@
       {
         "date": "2026-05-18",
         "close": 6.34,
-        "price_change_pct": -3.353658536585362,
+        "price_change_pct": -3.353658536585375,
         "volume": 11000.0,
         "foreign_net_buy": 0.0,
         "investment_trust_net_buy": 0.0,
@@ -112763,7 +112763,7 @@
         "investment_trust_net_buy": -16980.0,
         "dealer_net_buy": -5000.0,
         "total_inst_net_buy": -21980.0,
-        "inst_total_ratio": -0.049062499999999995,
+        "inst_total_ratio": -0.049062499999999,
         "turnover_rate": 12.416548254461969,
         "margin_balance": 10.0
       },
@@ -113241,7 +113241,7 @@
         "investment_trust_net_buy": -4000.0,
         "dealer_net_buy": -1.0,
         "total_inst_net_buy": -4001.0,
-        "inst_total_ratio": -0.050012499999999994,
+        "inst_total_ratio": -0.050012499999999,
         "turnover_rate": 1.61729012527125,
         "margin_balance": 0.0
       },
@@ -113597,7 +113597,7 @@
         "investment_trust_net_buy": 34981.0,
         "dealer_net_buy": -2000.0,
         "total_inst_net_buy": 32981.0,
-        "inst_total_ratio": 0.06987499999999999,
+        "inst_total_ratio": 0.06987499999999901,
         "turnover_rate": 6.037649116981664,
         "margin_balance": 0.0
       },
@@ -113624,7 +113624,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": -45000.0,
         "inst_total_ratio": -0.38135593220338904,
-        "turnover_rate": 1.5094122792454159,
+        "turnover_rate": 1.509412279245415,
         "margin_balance": 0.0
       },
       {
@@ -115079,7 +115079,7 @@
         "dealer_net_buy": 160.0,
         "total_inst_net_buy": -48840.0,
         "inst_total_ratio": -0.18430188679245202,
-        "turnover_rate": 2.3547901964130498,
+        "turnover_rate": 2.354790196413049,
         "margin_balance": 0.0
       },
       {
@@ -117650,7 +117650,7 @@
         "investment_trust_net_buy": 1000.0,
         "dealer_net_buy": 10.0,
         "total_inst_net_buy": 1010.0,
-        "inst_total_ratio": 0.03060606060606,
+        "inst_total_ratio": 0.030606060606059998,
         "turnover_rate": 0.5600538154014081,
         "margin_balance": 0.0
       },
@@ -121317,7 +121317,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": -30000.0,
         "inst_total_ratio": -0.18987341772151903,
-        "turnover_rate": 1.39280677009873,
+        "turnover_rate": 1.3928067700987299,
         "margin_balance": 0.0
       },
       {
@@ -123236,7 +123236,7 @@
         "investment_trust_net_buy": -18000.0,
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": -18000.0,
-        "inst_total_ratio": -0.028124999999999997,
+        "inst_total_ratio": -0.028124999999999,
         "turnover_rate": 1.523504101138543,
         "margin_balance": 0.0
       },
@@ -124775,7 +124775,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": -2000.0,
         "inst_total_ratio": -0.011299435028248001,
-        "turnover_rate": 1.6876976197370679,
+        "turnover_rate": 1.687697619737067,
         "margin_balance": 0.0
       },
       {
@@ -131613,7 +131613,7 @@
         "dealer_net_buy": -43.0,
         "total_inst_net_buy": -39043.0,
         "inst_total_ratio": -0.12120864041923,
-        "turnover_rate": 3.5440148893647,
+        "turnover_rate": 3.5440148893647008,
         "margin_balance": 0.0
       }
     ]
@@ -131800,7 +131800,7 @@
         "dealer_net_buy": -14211.0,
         "total_inst_net_buy": 116744.0,
         "inst_total_ratio": 0.277301662707838,
-        "turnover_rate": 2.2760383777698108,
+        "turnover_rate": 2.27603837776981,
         "margin_balance": 0.0
       },
       {
@@ -132950,7 +132950,7 @@
         "investment_trust_net_buy": 2726000.0,
         "dealer_net_buy": 222946.0,
         "total_inst_net_buy": 2948946.0,
-        "inst_total_ratio": 0.36294719999999997,
+        "inst_total_ratio": 0.362947199999999,
         "turnover_rate": 31.36930591598084,
         "margin_balance": 1.0
       },
@@ -137172,7 +137172,7 @@
         "investment_trust_net_buy": 6000.0,
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 6000.0,
-        "inst_total_ratio": 0.07038701125018999,
+        "inst_total_ratio": 0.07038701125019,
         "turnover_rate": 1.064473026973027,
         "margin_balance": 0.0
       }
@@ -138406,7 +138406,7 @@
         "investment_trust_net_buy": 723000.0,
         "dealer_net_buy": 45587.0,
         "total_inst_net_buy": 768587.0,
-        "inst_total_ratio": 0.11302749999999999,
+        "inst_total_ratio": 0.113027499999999,
         "turnover_rate": 46.17056104598591,
         "margin_balance": 44.0
       },
@@ -138737,7 +138737,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": -69996.0,
         "inst_total_ratio": -0.256395604395604,
-        "turnover_rate": 1.8698630136986298,
+        "turnover_rate": 1.869863013698629,
         "margin_balance": 0.0
       },
       {
@@ -140909,7 +140909,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 158532.0,
         "inst_total_ratio": 0.3603,
-        "turnover_rate": 2.5072143240254148,
+        "turnover_rate": 2.507214324025414,
         "margin_balance": 20.0
       },
       {
@@ -140973,7 +140973,7 @@
         "investment_trust_net_buy": -98984.0,
         "dealer_net_buy": 3089.0,
         "total_inst_net_buy": -100876.0,
-        "inst_total_ratio": -0.09851171874999999,
+        "inst_total_ratio": -0.098511718749999,
         "turnover_rate": 5.834971517731876,
         "margin_balance": 1.0
       },
@@ -141626,7 +141626,7 @@
         "dealer_net_buy": 28898.0,
         "total_inst_net_buy": -90102.0,
         "inst_total_ratio": -0.12479501385041501,
-        "turnover_rate": 3.70431941806599,
+        "turnover_rate": 3.7043194180659897,
         "margin_balance": 0.0
       },
       {
@@ -151077,7 +151077,7 @@
         "investment_trust_net_buy": 6000.0,
         "dealer_net_buy": -126.0,
         "total_inst_net_buy": 5874.0,
-        "inst_total_ratio": 0.07342499999999999,
+        "inst_total_ratio": 0.073424999999999,
         "turnover_rate": 0.8003509619003021,
         "margin_balance": 0.0
       },
@@ -152707,7 +152707,7 @@
         "dealer_net_buy": -299.0,
         "total_inst_net_buy": -67299.0,
         "inst_total_ratio": -0.120824057450628,
-        "turnover_rate": 3.6199003037863218,
+        "turnover_rate": 3.619900303786321,
         "margin_balance": 0.0
       },
       {
@@ -159179,7 +159179,7 @@
         "dealer_net_buy": -1780.0,
         "total_inst_net_buy": 32220.0,
         "inst_total_ratio": 0.079555555555555,
-        "turnover_rate": 2.69904270353391,
+        "turnover_rate": 2.6990427035339097,
         "margin_balance": 0.0
       },
       {
@@ -159231,7 +159231,7 @@
         "dealer_net_buy": 2732.0,
         "total_inst_net_buy": 79832.0,
         "inst_total_ratio": 0.26610666666666605,
-        "turnover_rate": 1.9992908915066,
+        "turnover_rate": 1.9992908915065999,
         "margin_balance": 0.0
       },
       {
@@ -163413,7 +163413,7 @@
         "investment_trust_net_buy": -53875.0,
         "dealer_net_buy": 31959.0,
         "total_inst_net_buy": -306993.0,
-        "inst_total_ratio": -0.20631249999999998,
+        "inst_total_ratio": -0.206312499999999,
         "turnover_rate": 45.38104247208105,
         "margin_balance": 0.0
       },
@@ -163944,7 +163944,7 @@
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": 9000.0,
         "inst_total_ratio": 0.09,
-        "turnover_rate": 1.77503444232456,
+        "turnover_rate": 1.7750344423245599,
         "margin_balance": 0.0
       },
       {
@@ -165055,7 +165055,7 @@
         "investment_trust_net_buy": 245024.0,
         "dealer_net_buy": -11002.0,
         "total_inst_net_buy": 234022.0,
-        "inst_total_ratio": 0.11701099999999999,
+        "inst_total_ratio": 0.117010999999999,
         "turnover_rate": 59.25925925925925,
         "margin_balance": 0.0
       },
@@ -165559,7 +165559,7 @@
         "investment_trust_net_buy": -9000.0,
         "dealer_net_buy": -560.0,
         "total_inst_net_buy": -9560.0,
-        "inst_total_ratio": -0.14937499999999998,
+        "inst_total_ratio": -0.149374999999999,
         "turnover_rate": 0.38131366430068403,
         "margin_balance": null
       },
@@ -165651,7 +165651,7 @@
         "dealer_net_buy": -435.0,
         "total_inst_net_buy": -37660.0,
         "inst_total_ratio": -0.144286765156623,
-        "turnover_rate": 1.555092451434267,
+        "turnover_rate": 1.5550924514342679,
         "margin_balance": null
       }
     ]
@@ -165707,7 +165707,7 @@
         "investment_trust_net_buy": -44000.0,
         "dealer_net_buy": 30000.0,
         "total_inst_net_buy": -14153.0,
-        "inst_total_ratio": -0.055285156249999995,
+        "inst_total_ratio": -0.055285156249999,
         "turnover_rate": 6.72392509127203,
         "margin_balance": 0.0
       },
@@ -167279,7 +167279,7 @@
         "investment_trust_net_buy": 0.0,
         "dealer_net_buy": -1.0,
         "total_inst_net_buy": -1.0,
-        "inst_total_ratio": -7.692307692307694e-05,
+        "inst_total_ratio": -7.692307692307695e-05,
         "turnover_rate": 0.45217391304347804,
         "margin_balance": null
       },
@@ -178573,7 +178573,7 @@
         "investment_trust_net_buy": -1000.0,
         "dealer_net_buy": 449.0,
         "total_inst_net_buy": -551.0,
-        "inst_total_ratio": -0.02395652173913,
+        "inst_total_ratio": -0.023956521739129998,
         "turnover_rate": 0.39086470999792805,
         "margin_balance": 0.0
       },
@@ -183699,7 +183699,7 @@
         "investment_trust_net_buy": 17000.0,
         "dealer_net_buy": -70.0,
         "total_inst_net_buy": 16930.0,
-        "inst_total_ratio": 0.21162499999999998,
+        "inst_total_ratio": 0.211624999999999,
         "turnover_rate": 2.153771359993809,
         "margin_balance": 0.0
       },
@@ -183777,7 +183777,7 @@
         "investment_trust_net_buy": -11967.0,
         "dealer_net_buy": 0.0,
         "total_inst_net_buy": -11967.0,
-        "inst_total_ratio": -0.29917499999999997,
+        "inst_total_ratio": -0.299174999999999,
         "turnover_rate": 1.076885679996904,
         "margin_balance": 0.0
       },
@@ -189685,7 +189685,7 @@
         "investment_trust_net_buy": 11000.0,
         "dealer_net_buy": 7513.0,
         "total_inst_net_buy": 18513.0,
-        "inst_total_ratio": 0.07231640624999999,
+        "inst_total_ratio": 0.07231640624999901,
         "turnover_rate": 10.95160835063559,
         "margin_balance": 1.0
       },
@@ -190785,7 +190785,7 @@
         "dealer_net_buy": 642.0,
         "total_inst_net_buy": 32642.0,
         "inst_total_ratio": 0.10598051948051901,
-        "turnover_rate": 6.5577788649685615,
+        "turnover_rate": 6.557778864968561,
         "margin_balance": 1.0
       },
       {
@@ -195586,7 +195586,7 @@
         "dealer_net_buy": null,
         "total_inst_net_buy": null,
         "inst_total_ratio": null,
-        "turnover_rate": 0.27148707042827,
+        "turnover_rate": 0.27148707042826997,
         "margin_balance": null
       },
       {
@@ -196615,7 +196615,7 @@
         "dealer_net_buy": -118.0,
         "total_inst_net_buy": 18007.0,
         "inst_total_ratio": 0.086157894736842,
-        "turnover_rate": 7.6484656848476416,
+        "turnover_rate": 7.648465684847641,
         "margin_balance": 0.0
       },
       {
@@ -197092,7 +197092,7 @@
         "investment_trust_net_buy": 6000.0,
         "dealer_net_buy": 17.0,
         "total_inst_net_buy": 6017.0,
-        "inst_total_ratio": 0.24068000000000003,
+        "inst_total_ratio": 0.24068,
         "turnover_rate": 0.829187396351575,
         "margin_balance": 0.0
       },
@@ -204105,7 +204105,7 @@
         "dealer_net_buy": -4276.0,
         "total_inst_net_buy": -37126.0,
         "inst_total_ratio": -0.136996309963099,
-        "turnover_rate": 5.807723629505809,
+        "turnover_rate": 5.8077236295058094,
         "margin_balance": null
       },
       {
@@ -213290,7 +213290,7 @@
         "investment_trust_net_buy": -15000.0,
         "dealer_net_buy": -13.0,
         "total_inst_net_buy": -15013.0,
-        "inst_total_ratio": -0.18766249999999998,
+        "inst_total_ratio": -0.187662499999999,
         "turnover_rate": 2.068833076254963,
         "margin_balance": 0.0
       },
@@ -213781,7 +213781,7 @@
         "investment_trust_net_buy": 97000.0,
         "dealer_net_buy": -1.0,
         "total_inst_net_buy": 96999.0,
-        "inst_total_ratio": 0.46859420289855,
+        "inst_total_ratio": 0.46859420289854997,
         "turnover_rate": 3.136424559034616,
         "margin_balance": 0.0
       },
@@ -215159,7 +215159,7 @@
         "dealer_net_buy": 2181.0,
         "total_inst_net_buy": 101181.0,
         "inst_total_ratio": 0.47726886792452805,
-        "turnover_rate": 3.3227554771078758,
+        "turnover_rate": 3.322755477107875,
         "margin_balance": 0.0
       },
       {
@@ -218255,7 +218255,7 @@
         "investment_trust_net_buy": 231000.0,
         "dealer_net_buy": 1001.0,
         "total_inst_net_buy": 232001.0,
-        "inst_total_ratio": 0.09280039999999999,
+        "inst_total_ratio": 0.092800399999999,
         "turnover_rate": 23.355489752241695,
         "margin_balance": 1.0
       },
@@ -222703,7 +222703,7 @@
         "investment_trust_net_buy": 237027.0,
         "dealer_net_buy": -77095.0,
         "total_inst_net_buy": 158732.0,
-        "inst_total_ratio": 0.03258714842948,
+        "inst_total_ratio": 0.032587148429479997,
         "turnover_rate": 19.284368220184646,
         "margin_balance": 26.0
       },
@@ -227564,7 +227564,7 @@
         "investment_trust_net_buy": -19000.0,
         "dealer_net_buy": 195.0,
         "total_inst_net_buy": -18805.0,
-        "inst_total_ratio": -0.23506249999999998,
+        "inst_total_ratio": -0.235062499999999,
         "turnover_rate": 1.701618260235712,
         "margin_balance": 0.0
       },
@@ -227829,7 +227829,7 @@
         "investment_trust_net_buy": 47000.0,
         "dealer_net_buy": 8029.0,
         "total_inst_net_buy": 55029.0,
-        "inst_total_ratio": 0.11005799999999999,
+        "inst_total_ratio": 0.110057999999999,
         "turnover_rate": 9.949199585898395,
         "margin_balance": 0.0
       },
@@ -234706,7 +234706,7 @@
         "investment_trust_net_buy": -50060.0,
         "dealer_net_buy": -356.0,
         "total_inst_net_buy": -50416.0,
-        "inst_total_ratio": -0.40332799999999996,
+        "inst_total_ratio": -0.403327999999999,
         "turnover_rate": 0.796246861752243,
         "margin_balance": 0.0
       },
