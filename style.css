@@ -704,6 +704,12 @@ table td:nth-child(12) {
     color: #1e3a8a;
 }
 
+.score-detail-panel h5 {
+    margin: 14px 0 6px 0;
+    font-size: 14px;
+    color: #334155;
+}
+
 .score-detail-panel p {
     margin: 0 0 10px 0;
 }
