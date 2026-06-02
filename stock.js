@@ -26,7 +26,7 @@ async function loadStockData() {
         const stockData = data
             .filter(item => String(item.stock_id || "").padStart(4, "0") === String(stockId).padStart(4, "0"))
             .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")))
-            .slice(0, 30);
+            .slice(0, 20);
 
         if (stockData.length === 0) {
             showError(`查無股票代號 ${stockId} 的資料`);
