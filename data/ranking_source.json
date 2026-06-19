@@ -23132,7 +23132,7 @@
     "issued_shares": 4663551.0,
     "market_cap": 55263079.35,
     "turnover_rate": 0.9920980814834011,
-    "amplitude_pct": 1.2658227848101289,
+    "amplitude_pct": 1.265822784810128,
     "price_change_pct": -0.4201680672268967,
     "inst_total_ratio": 0.021613677134890003,
     "foreign_buy_ratio": 0.021613677134890003,
@@ -23184,7 +23184,7 @@
     "issued_shares": 35000000.0,
     "market_cap": 976500000.0,
     "turnover_rate": 0.049034285714285,
-    "amplitude_pct": 1.2544802867383429,
+    "amplitude_pct": 1.254480286738342,
     "price_change_pct": 2.010968921389386,
     "inst_total_ratio": -0.058151730567532006,
     "foreign_buy_ratio": -0.05826826710173601,
@@ -26017,7 +26017,7 @@
     "short_balance": null,
     "issued_shares": 4607164.8,
     "market_cap": 83850399.36,
-    "turnover_rate": 1.5193726085075139,
+    "turnover_rate": 1.519372608507513,
     "amplitude_pct": 2.472527472527468,
     "price_change_pct": -0.27397260273972995,
     "inst_total_ratio": 0.228571428571428,
@@ -30469,7 +30469,7 @@
     "inst_total_ratio": 0.031611522046412,
     "foreign_buy_ratio": 0.027446513606609,
     "investment_trust_ratio": 0.027446513606609,
-    "inst_to_issued_ratio": 0.00063691361643
+    "inst_to_issued_ratio": 0.0006369136164299999
   },
   {
     "date": "2026-06-17",
@@ -31691,7 +31691,7 @@
     "inst_total_ratio": -0.001958756424721,
     "foreign_buy_ratio": -0.001958756424721,
     "investment_trust_ratio": -0.001958756424721,
-    "inst_to_issued_ratio": -7.49535288121365e-05
+    "inst_to_issued_ratio": -7.495352881213651e-05
   },
   {
     "date": "2026-06-17",
@@ -32024,7 +32024,7 @@
     "issued_shares": 3966700.0,
     "market_cap": 84292375.0,
     "turnover_rate": 4.593768119595634,
-    "amplitude_pct": 1.88235294117648,
+    "amplitude_pct": 1.8823529411764799,
     "price_change_pct": 0.7109004739336425,
     "inst_total_ratio": 0.323782659517838,
     "foreign_buy_ratio": 0.323782659517838,
@@ -32544,7 +32544,7 @@
     "issued_shares": 6005989.8,
     "market_cap": 585584005.5,
     "turnover_rate": 1.542143811166645,
-    "amplitude_pct": 1.5384615384615379,
+    "amplitude_pct": 1.538461538461537,
     "price_change_pct": 1.5625,
     "inst_total_ratio": 0.313103939711296,
     "foreign_buy_ratio": 0.313103939711296,
@@ -34701,7 +34701,7 @@
     "short_balance": 0.0,
     "issued_shares": 10909105.1,
     "market_cap": 480546079.655,
-    "turnover_rate": 1.9122283458429599,
+    "turnover_rate": 1.912228345842959,
     "amplitude_pct": 1.70261066969353,
     "price_change_pct": -1.893095768374168,
     "inst_total_ratio": -0.19953788703159503,
@@ -35591,7 +35591,7 @@
     "inst_total_ratio": -0.100248932607924,
     "foreign_buy_ratio": -0.10005972441993301,
     "investment_trust_ratio": -0.10005972441993301,
-    "inst_to_issued_ratio": -0.07852139999999999
+    "inst_to_issued_ratio": -0.078521399999999
   },
   {
     "date": "2026-06-17",
@@ -38081,7 +38081,7 @@
     "short_balance": 0.0,
     "issued_shares": 32874905.0,
     "market_cap": 1495808177.5,
-    "turnover_rate": 3.66954368385247,
+    "turnover_rate": 3.6695436838524698,
     "amplitude_pct": 2.3076923076923013,
     "price_change_pct": 0.2202643171806199,
     "inst_total_ratio": -0.09721815811047901,
@@ -40551,7 +40551,7 @@
     "short_balance": 0.0,
     "issued_shares": 2000030.0,
     "market_cap": 125601884.0,
-    "turnover_rate": 5.5311170332445005,
+    "turnover_rate": 5.5311170332445,
     "amplitude_pct": 4.777070063694268,
     "price_change_pct": -1.5673981191222572,
     "inst_total_ratio": 0.090396297367659,
@@ -40994,7 +40994,7 @@
     "issued_shares": 3474500.0,
     "market_cap": 714009750.0,
     "turnover_rate": 2.863692617642826,
-    "amplitude_pct": 1.7031630170316299,
+    "amplitude_pct": 1.703163017031629,
     "price_change_pct": -0.24271844660194172,
     "inst_total_ratio": -0.28031437501884404,
     "foreign_buy_ratio": -0.28055558347320003,
@@ -41123,7 +41123,7 @@
     "short_balance": null,
     "issued_shares": 4547884.3,
     "market_cap": 327447669.59999996,
-    "turnover_rate": 1.2850151003181849,
+    "turnover_rate": 1.285015100318184,
     "amplitude_pct": 2.6388888888888973,
     "price_change_pct": 1.4084507042253522,
     "inst_total_ratio": -0.171112746188463,
@@ -41696,7 +41696,7 @@
     "issued_shares": 2800000.0,
     "market_cap": 88480000.0,
     "turnover_rate": 1.023214285714285,
-    "amplitude_pct": 1.2658227848101329,
+    "amplitude_pct": 1.265822784810132,
     "price_change_pct": 1.282051282051289,
     "inst_total_ratio": -0.38394415357766104,
     "foreign_buy_ratio": -0.034904013961605,
@@ -43677,7 +43677,7 @@
     "inst_total_ratio": -0.0004990019960070001,
     "foreign_buy_ratio": 0.0,
     "investment_trust_ratio": 0.0,
-    "inst_to_issued_ratio": -3.1249999999999997e-07
+    "inst_to_issued_ratio": -3.124999999999999e-07
   },
   {
     "date": "2026-06-17",
@@ -50489,7 +50489,7 @@
     "inst_total_ratio": 4.7607712449416804e-05,
     "foreign_buy_ratio": 0.0,
     "investment_trust_ratio": 0.0,
-    "inst_to_issued_ratio": 2.4515587316860886e-07
+    "inst_to_issued_ratio": 2.451558731686088e-07
   },
   {
     "date": "2026-06-16",
@@ -51916,7 +51916,7 @@
     "turnover_rate": 0.367823604688975,
     "amplitude_pct": 5.919003115264792,
     "price_change_pct": 0.0,
-    "inst_total_ratio": -7.997121036426889e-05,
+    "inst_total_ratio": -7.99712103642689e-05,
     "foreign_buy_ratio": 0.0,
     "investment_trust_ratio": 0.0,
     "inst_to_issued_ratio": -2.94152988675257e-07
@@ -53266,7 +53266,7 @@
     "issued_shares": 48040948.6,
     "market_cap": 2298759390.51,
     "turnover_rate": 3.48861138016746,
-    "amplitude_pct": 3.5527690700104397,
+    "amplitude_pct": 3.552769070010439,
     "price_change_pct": -2.644964394710066,
     "inst_total_ratio": -0.489904902378454,
     "foreign_buy_ratio": -0.48874019816678405,
@@ -54176,12 +54176,12 @@
     "issued_shares": 13341600.0,
     "market_cap": 368228160.0,
     "turnover_rate": 0.037491755111830005,
-    "amplitude_pct": 1.8115942028985499,
+    "amplitude_pct": 1.811594202898549,
     "price_change_pct": 0.0,
     "inst_total_ratio": -0.199920031987205,
     "foreign_buy_ratio": -0.199920031987205,
     "investment_trust_ratio": -0.199920031987205,
-    "inst_to_issued_ratio": -7.495352881213651e-05
+    "inst_to_issued_ratio": -7.495352881213652e-05
   },
   {
     "date": "2026-06-16",
@@ -59898,7 +59898,7 @@
     "turnover_rate": 5.632852085803039,
     "amplitude_pct": 3.603603603603603,
     "price_change_pct": -1.7699115044247788,
-    "inst_total_ratio": -0.27037248882299997,
+    "inst_total_ratio": -0.270372488822999,
     "foreign_buy_ratio": -0.266144878813701,
     "investment_trust_ratio": -0.266144878813701,
     "inst_to_issued_ratio": -0.015229682376103
@@ -62365,7 +62365,7 @@
     "short_balance": 0.0,
     "issued_shares": 2084700.0,
     "market_cap": 213681750.0,
-    "turnover_rate": 1.6938168561423699,
+    "turnover_rate": 1.693816856142369,
     "amplitude_pct": 3.902439024390244,
     "price_change_pct": -1.9138755980861244,
     "inst_total_ratio": -0.08495936110560401,
@@ -62527,7 +62527,7 @@
     "inst_total_ratio": -0.079937866497955,
     "foreign_buy_ratio": -0.094633457453449,
     "investment_trust_ratio": -0.094633457453449,
-    "inst_to_issued_ratio": -0.025753181564669998
+    "inst_to_issued_ratio": -0.025753181564669003
   },
   {
     "date": "2026-06-16",
@@ -64267,8 +64267,8 @@
     "amplitude_pct": 2.439024390243902,
     "price_change_pct": -1.6786570743405276,
     "inst_total_ratio": 0.14348307460366,
-    "foreign_buy_ratio": 0.11966738121598999,
-    "investment_trust_ratio": 0.11966738121598999,
+    "foreign_buy_ratio": 0.11966738121598901,
+    "investment_trust_ratio": 0.11966738121598901,
     "inst_to_issued_ratio": 0.0030079012345670003
   },
   {
@@ -293141,7 +293141,7 @@
     "short_balance": 0.0,
     "issued_shares": 10000000.0,
     "market_cap": 278500000.0,
-    "turnover_rate": 1.7406800000000002,
+    "turnover_rate": 1.74068,
     "amplitude_pct": 3.41113105924597,
     "price_change_pct": 2.2018348623853266,
     "inst_total_ratio": 0.333203116023622,
@@ -444569,8 +444569,8 @@
     "amplitude_pct": 6.786427145708583,
     "price_change_pct": -0.5952380952380952,
     "inst_total_ratio": 0.085640909090909,
-    "foreign_buy_ratio": 0.09425000000000001,
-    "investment_trust_ratio": 0.09425000000000001,
+    "foreign_buy_ratio": 0.09425,
+    "investment_trust_ratio": 0.09425,
     "inst_to_issued_ratio": 0.0058878125
   },
   {
@@ -554210,7 +554210,7 @@
     "turnover_rate": 0.829187396351575,
     "amplitude_pct": 3.943661971830982,
     "price_change_pct": 1.8651362984218034,
-    "inst_total_ratio": 0.24068000000000003,
+    "inst_total_ratio": 0.24068,
     "foreign_buy_ratio": 0.24,
     "investment_trust_ratio": 0.24,
     "inst_to_issued_ratio": 0.001995688225538
